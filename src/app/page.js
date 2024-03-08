@@ -3,12 +3,17 @@ import Image from "next/image";
 import Header from "./header";
 import { useEffect, useState } from "react";
 import { fetchGraphQl } from "./api/graphicql";
+import moment from 'moment';
 
 export default function Home() {
   const [postes,setPostes]=useState([])
   useEffect(()=>{
     fetchGraphQl(setPostes)
   },[])
+  const imageLoader = ({src}) => {
+    console.log(src,'3434343');
+    return src
+  }
   // console.log(postes,'postes');
   return (
     <main className="container min-h-screen mx-auto max-w-screen-lg">
@@ -71,17 +76,21 @@ export default function Home() {
             <div key={data.id}>
               <a  className="mb-6 block">
               <Image
-                  src="/img/card-img.svg"
+              loader={imageLoader}
+                  src={data.coverImage}
                   alt="spurtCMS card image"
                   className="dark:invert"
                   width={1000}
                   height={1000}
                   priority
+                  layout="responsive"
+                  placeholder="blur"
+                   blurDataURL={data.coverImage}
                 />
               </a>
-              <h1 className="text-3xxl font-bold "> <a href="" className="text-black hover:underline inline-flex leading-6">{data.title}</a> </h1>
-              <p className="text-base text-black my-3">Mar 2, 2024</p>
-              <p className="text-lg text-black font-light line-clamp-3 mb-3"><div  dangerouslySetInnerHTML={{
+              <h1 className="text-3xxl font-bold line-clamp-2"> <a  className="text-black hover:underline  leading-[2.625rem] line-clamp-2">{data.title}</a> </h1>
+              <p className="text-base text-black my-3">{moment(data.createdOn).format("MMM DD, YYYY")} </p>
+              <p className="text-lg text-black font-light line-clamp-3 mb-3 "><div  dangerouslySetInnerHTML={{
             __html: data.description,
           }}/> </p>
               <div className="flex items-center gap-x-2">
