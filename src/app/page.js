@@ -4,6 +4,7 @@ import Header from "./components/header";
 import { useEffect, useState } from "react";
 import { fetchGraphQl } from "./api/graphicql";
 import Post from "./components/Post";
+import NavBar from "./components/NavBar";
 
 export default function Home() {
   const [postes,setPostes]=useState([])
@@ -47,19 +48,9 @@ export default function Home() {
               <p className="text-lg text-black font-light">Get started with the popover component to show any type of content inside a pop-up box when hovering or clicking over a trigger element. There are multiple examples that you can choose from.</p>
             </div>
           </div>
-          <div className="flex flex-nowrap flex-row gap-x-2 pb-4 mb-4 justify-start overflow-auto">
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> All </a>
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Articles </a>
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Blogs </a>
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Career </a>
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Automation </a>
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Managing </a>
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Engineering </a>
-            <a className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Soft Skills </a>
-            {/* <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Design </a> */}
-          </div>
+          <NavBar />
           {/* nav */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8" >
           {postes?.channelEntriesList?.channelEntryList?.channelEntryList?.map((data,index)=>(
           index<4&&
            <Post data={data}/>
@@ -224,6 +215,9 @@ export default function Home() {
             </div> */}
           </div>
         </div>
+
+
+
     </main>
   );
 }

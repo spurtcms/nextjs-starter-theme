@@ -37,3 +37,9 @@ body {
     text-wrap: balance;
   }
 }
+.scrollbar-style::-webkit-scrollbar {
+  background: transparent; 
+  -webkit-appearance: none;
+  width: 0;
+  height: 0;
+}
