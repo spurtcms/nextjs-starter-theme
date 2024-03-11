@@ -1,15 +1,15 @@
 'use client'
 import Image from "next/image";
-import Header from "./header";
+import Header from "./components/header";
 import { useEffect, useState } from "react";
 import { fetchGraphQl } from "./api/graphicql";
+import Post from "./components/Post";
 
 export default function Home() {
   const [postes,setPostes]=useState([])
   useEffect(()=>{
     fetchGraphQl(setPostes)
   },[])
-  // console.log(postes,'postes');
   return (
     <main className="container min-h-screen mx-auto max-w-screen-lg">
         <Header/>
@@ -44,7 +44,7 @@ export default function Home() {
               </div>
             </div>
             <div className="w-full max-w-full w-full sm:w-5/12">
-              <p className="text-lg text-black font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qii uid dubitas igitur mutare principia naturae? Ita multo esse sanguine profuso in laetitia et in sace victoria est mortuus. Esse Omnia contraria, quos etiam insanos esse vultis. Ita multo esse sanguine profuso in laetitia et in victoria est mortuus. </p>
+              <p className="text-lg text-black font-light">Get started with the popover component to show any type of content inside a pop-up box when hovering or clicking over a trigger element. There are multiple examples that you can choose from.</p>
             </div>
           </div>
           <div className="flex flex-nowrap flex-row gap-x-2 pb-4 mb-4 justify-start overflow-auto">
@@ -56,49 +56,14 @@ export default function Home() {
             <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Managing </a>
             <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Engineering </a>
             <a className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Soft Skills </a>
-            <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Design </a>
+            {/* <a  className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> Design </a> */}
           </div>
           {/* nav */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8">
-            {console.log(postes?.channelEntriesList?.channelEntryList?.channelEntryList)
-
-
-
-
-          }
           {postes?.channelEntriesList?.channelEntryList?.channelEntryList?.map((data,index)=>(
-          
-            <div key={data.id}>
-              <a  className="mb-6 block">
-              <Image
-                  src="/img/card-img.svg"
-                  alt="spurtCMS card image"
-                  className="dark:invert"
-                  width={1000}
-                  height={1000}
-                  priority
-                />
-              </a>
-              <h1 className="text-3xxl font-bold "> <a href="" className="text-black hover:underline inline-flex leading-6">{data.title}</a> </h1>
-              <p className="text-base text-black my-3">Mar 2, 2024</p>
-              <p className="text-lg text-black font-light line-clamp-3 mb-3"><div  dangerouslySetInnerHTML={{
-            __html: data.description,
-          }}/> </p>
-              <div className="flex items-center gap-x-2">
-                <Image
-                  src="/img/profile-user.svg"
-                  alt="spurtCMS Profile Image"
-                  className="dark:invert"
-                  width={32}
-                  height={32}
-                  priority
-                />
-                <div className="">
-                  <a  className="text-primary text-base"> Sasha Bondar </a>
-                </div>
-              </div>
-            </div>
-           
+          index<4&&
+           <Post data={data}/>
+
           ))}
             
              {/* <div>
@@ -190,35 +155,46 @@ export default function Home() {
           <div className="border-b border-gray-200 block mb-8 mt-10"></div>
           <h1 className="text-3xxl font-bold text-black mb-10"> More Stories </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-8">
-            <div>
-              <a  className="mb-6 block">
-              <Image
-                  src="/img/card-img5.svg"
-                  alt="spurtCMS card image"
-                  className="dark:invert"
-                  width={1000}
-                  height={1000}
-                  priority
-                />
-              </a>
-              <h1 className="text-3xxl font-bold "> <a href="" className="text-black hover:underline inline-flex leading-6">Deploying Next.js Apps</a> </h1>
-              <p className="text-base text-black my-3">Mar 2, 2024</p>
-              <p className="text-lg text-black font-light line-clamp-3 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Qii uid dubitas igitur mutare principia naturae? Ita multo esse sanguine profuso in laetitia et in sace victoria est mortuus. Esse Omnia contraria, quos etiam insanos esse vultis. Ita multo esse sanguine profuso in laetitia et in victoria est mortuus. </p>
-              <div className="flex items-center gap-x-2">
-                <Image
-                  src="/img/profile-user.svg"
-                  alt="spurtCMS Profile Image"
-                  className="dark:invert"
-                  width={32}
-                  height={32}
-                  priority
-                />
-                <div className="">
-                  <a  className="text-primary text-base"> Sasha Bondar </a>
-                </div>
-              </div>
-            </div>
-            <div>
+          {postes?.channelEntriesList?.channelEntryList?.channelEntryList?.map((data,index)=>(
+          index>=4&&
+          <Post data={data}/>
+        //     <div>
+        //       <Link href={`/detail/${data.id}`}>
+        //       <a  className="mb-6 block">
+        //       <Image
+        //          loader={imageLoader}
+        //          src={data.coverImage}
+        //          alt="spurtCMS card image"
+        //          className="dark:invert"
+        //          width={1000}
+        //          height={1000}
+        //          priority
+        //          layout="responsive"
+        //          placeholder="blur"
+        //           blurDataURL={data.coverImage}
+        //         />
+        //       </a>
+        //       <h1 className="text-3xxl font-bold "> <a className="text-black hover:underline leading-[2.625rem] line-clamp-2">{data.title}</a> </h1></Link>
+        //       <p className="text-base text-black my-3">{moment(data.createdOn).format("MMM DD, YYYY")} </p>
+        //       <p className="text-lg text-black font-light line-clamp-3 mb-3"><div  dangerouslySetInnerHTML={{
+        //   __html: data.description,
+        // }}/> </p>
+        //       <div className="flex items-center gap-x-2">
+        //         <Image
+        //           src="/img/profile-user.svg"
+        //           alt="spurtCMS Profile Image"
+        //           className="dark:invert"
+        //           width={32}
+        //           height={32}
+        //           priority
+        //         />
+        //         <div className="">
+        //           <a  className="text-primary text-base"> Sasha Bondar </a>
+        //         </div>
+        //       </div>
+        //     </div>
+              ))}
+            {/* <div>
               <a  className="mb-6 block">
               <Image
                   src="/img/card-img6.svg"
@@ -245,7 +221,7 @@ export default function Home() {
                   <a  className="text-primary text-base"> Sasha Bondar </a>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
     </main>
