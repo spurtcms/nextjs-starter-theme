@@ -71,11 +71,12 @@ const GET_POSTS_QUERY = `query($channelId: Int,$channelEntryId: Int,$categoryId:
   }
 `;
 
-async function fetchGraphQLData() {
+async function fetchGraphQLData(slug) {
+  let obj=slug?{ "limit": 10, "offset": 0,channelEntryId:slug }:{ "limit": 10, "offset": 0}
   try {
     const response = await axiosInstance.post('', {
       query: GET_POSTS_QUERY,
-      variables: { "limit": 10, "offset": 0 }
+      variables: obj
     });
 // console.log(response,'34343434');
     return response.data; 
@@ -85,11 +86,17 @@ async function fetchGraphQLData() {
   }
 }
 
-export const fetchGraphQl = async (setPostes) => {
+export const fetchGraphQl = async (setPostes,slug) => {
+
   try {
-    const entries = await fetchGraphQLData();
+    const entries = await fetchGraphQLData(slug?slug:"");
     // console.log(entries, 'entries');
     // return entries;
+    // console.log(entries?.data?.channelEntriesList?.channelEntryList?.channelEntryList,'4334343');
+    
+    // entries?.data?.channelEntriesList?.channelEntryList?.channelEntryList.sort((a,b)=>{
+    //       return new Date(a.createdOn)-new Date(b.createdOn)
+    // })
     setPostes(entries.data)
   } catch (error) {
     console.error('Error fetching posts:', error);
