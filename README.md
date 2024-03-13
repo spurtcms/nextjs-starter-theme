@@ -1,6 +1,6 @@
 # A statically generated blog example using Next.js and spurtcms
 
-![Screenshot of spurtCMS using Presentation Tool to do Visual Editing](https://github.com/sanity-io/next.js/assets/81981/59ecd9d6-7a78-41c6-95f7-275f66fe3c9d)
+![Screenshot of spurtCMS using Presentation Tool to do Visual Editing](https://www.spurtcms.com/spurtcms-starter-template.jpg)
 
 This starter is a statically generated blog that uses Next.js App Router for the frontend and [spurtcms][https://demo.spurtcms.com/dashboard/] to handle its content. It comes with a native spurtcms that offers features like real-time collaboration and visual editing with live updates using [https://spurtcms.com/documentation].
 
@@ -25,6 +25,11 @@ The Studio connects to spurtcms, which gives you hosted content APIs with a flex
 ## Admin Panel Demo
 
 ### [https://demo.spurtcms.com/](https://demo.spurtcms.com/)
+
+```bash
+Username : Admin
+Password : Admin@123
+```	
 
 ## Deploy your own
 
