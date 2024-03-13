@@ -1,78 +1,9 @@
 import axiosInstance from "./axios";
 
 
-const GET_POSTS_QUERY = `query($channelId: Int,$channelEntryId: Int,$categoryId: Int,$limit: Int,$offset: Int){
-    channelEntriesList(channelId: $channelId,channelEntryId: $channelEntryId,categoryId: $categoryId, limit: $limit,offset: $offset){
-      channelEntryList{
-        channelEntryList{
-          id
-          title
-          slug
-          description
-          userId
-          channelId
-          status
-          isActive
-          isDeleted
-          deletedBy
-          deletedOn
-          createdOn
-          createdBy
-          modifiedBy
-          modifiedOn
-          coverImage
-          thumbnailImage
-          metaTitle
-          metaDescription
-          keyword
-          categoriesId
-          relatedArticles
-          categories{
-            id
-            categoryName
-            parentId
-            modifiedOn
-          }
-        }
-        count
-      }
-      channelEntry{
-        id
-        title
-        slug
-        description
-        userId
-        channelId
-        status
-        isActive
-        isDeleted
-        deletedBy
-        deletedOn
-        createdOn
-        createdBy
-        modifiedBy
-        modifiedBy
-        modifiedOn
-        coverImage
-        thumbnailImage
-        metaTitle
-        metaDescription
-        keyword
-        categoriesId
-        relatedArticles
-        categories{
-            id
-            categoryName
-            parentId
-            modifiedOn
-          }
-      }
-    }
-  }
-`;
-
-async function fetchGraphQLData(slug) {
-  let obj=slug?{ "limit": 10, "offset": 0,channelEntryId:slug }:{ "limit": 10, "offset": 0}
+async function fetchGraphQLData(GET_POSTS_QUERY,varia) {
+  let obj=varia
+  // slug?{ "limit": 10, "offset": 0,channelEntryId:slug }:{ "limit": 10, "offset": 0,channelId:102}
   try {
     const response = await axiosInstance.post('', {
       query: GET_POSTS_QUERY,
@@ -86,10 +17,10 @@ async function fetchGraphQLData(slug) {
   }
 }
 
-export const fetchGraphQl = async (setPostes,slug) => {
+export const fetchGraphQl = async (GET_POSTS_QUERY,varia,setPostes) => {
 
   try {
-    const entries = await fetchGraphQLData(slug?slug:"");
+    const entries = await fetchGraphQLData(GET_POSTS_QUERY,varia);
     // console.log(entries, 'entries');
     // return entries;
     // console.log(entries?.data?.channelEntriesList?.channelEntryList?.channelEntryList,'4334343');

@@ -1,16 +1,15 @@
 'use client'
 import React, { useEffect } from 'react'
 import { useState, useRef } from "react";
-import gsap from "gsap";
+import { fetchGraphQl } from '../api/graphicql';
+import Image from 'next/image';
 
-export default function NavBar() {
-    const dumdata=["All","Articles","Blogs","Career","Automation","Managing","Engineering","Soft Skills","design"]
+export default function NavBar({postes,activeIndex,setActiveIndex}) {
 
     let scrl = useRef(null);
     const [scrollX, setscrollX] = useState(0);
     const [scrolEnd, setscrolEnd] = useState(true);
-  
-    //Slide click
+    
     const slide = (shift) => {
       scrl.current.scrollLeft += shift;
       setscrollX(scrollX + shift);
@@ -24,17 +23,6 @@ export default function NavBar() {
         setscrolEnd(false);
       }
     };
-  
-    //Anim
-    const anim = (e) => {
-      gsap.from(e.target, { scale: 1 });
-      gsap.to(e.target, { scale: 1.5 });
-    };
-    const anim2 = (e) => {
-      gsap.from(e.target, { scale: 1.5 });
-      gsap.to(e.target, { scale: 1 });
-    };
-  
     const scrollCheck = () => {
       setscrollX(scrl.current.scrollLeft);
       if (
@@ -48,6 +36,7 @@ export default function NavBar() {
     };
     useEffect(()=>{
         if(scrl.current){
+         
             if (
                 Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <=
                 scrl.current.offsetWidth
@@ -57,40 +46,46 @@ export default function NavBar() {
                 setscrolEnd(false);
               }
         }
-       
     },[scrl])
+
   return (
    <>
    <div className="flex flex-nowrap flex-row gap-x-2 pb-4 mb-4 justify-start items-center ">
    {scrollX !== 0 && (
         <button
           onClick={() => slide(-50)}
-          onMouseEnter={(e) => anim(e)}
-          onMouseLeave={(e) => anim2(e)}
+          class="w-8 h-8"
         >
-          <img src="/img/arrow-left-colour.svg" alt="arrow-left" class="w-6 h-6" />
+          <Image src="/img/arrow-left-colour.svg" alt="arrow-left" class="w-6 h-6" width={32}
+                  height={32}
+                  priority />
         </button>
-      )}
+     )} 
 
    
   
- 
-  <ul ref={scrl} onScroll={scrollCheck} className='flex flex-nowrap flex-row gap-x-2 justify-start items-center overflow-scroll scrollbar-style'>
-   {dumdata.map((data,index)=>(
-        <li key={index} className="whitespace-nowrap px-6 py-2 rounded-3xl border border-gray-200 font-base text-gray-600 leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500"> {data} </li>
-  
+        {postes?.categoriesList?.categories&&<>
+        <ul ref={scrl} onScroll={scrollCheck} className='flex flex-nowrap flex-row gap-x-2 justify-start items-center overflow-scroll scrollbar-style'>
+            <li onClick={()=>setActiveIndex(0)} className={`whitespace-nowrap px-6 py-2 rounded-3xl border font-base  leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500 cursor-pointer ${activeIndex==0?'border-cyan-500 text-primary':'border-gray-200 text-gray-600'}`}> All</li>
+          {postes?.categoriesList?.categories?.map((data,index)=>(
+                <li key={index} onClick={()=>setActiveIndex(data.id)} className={`whitespace-nowrap px-6 py-2 rounded-3xl border font-base  leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500 cursor-pointer ${activeIndex===data.id?'border-cyan-500 text-primary':'border-gray-200 text-gray-600'}`}> {data.categoryName} </li>
+          
    ))}
   </ul>
+  </>
+
+ }
+  
   {!scrolEnd && (
         <button
           onClick={() => slide(+50)}
-          onMouseEnter={(e) => anim(e)}
-          onMouseLeave={(e) => anim2(e)}
+          class="w-8 h-8"
         >
-         <img src="/img/arrow-right-colour.svg" alt="arrow-left" class="w-6 h-6" />
+         <Image src="/img/arrow-right-colour.svg" alt="arrow-right" class="w-6 h-6" width={32}
+                  height={32}
+                  priority />
         </button>
       )}
-  
  </div>
    
    </>

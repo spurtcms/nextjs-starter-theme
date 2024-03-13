@@ -3,9 +3,7 @@ import Link from 'next/link'
 import moment from "moment";
 import Image from 'next/image';
 export default function Post({data}) {
-
     const imageLoader = ({src}) => {
-   
         return src
       }
   return (
@@ -24,6 +22,7 @@ export default function Post({data}) {
                 layout="responsive"
                 placeholder="blur"
                  blurDataURL={data.coverImage}
+
               />
             </a>
             <h1 className="text-3xxl font-bold line-clamp-2"> <a  className="text-black hover:underline  leading-[2.625rem] line-clamp-2">{data.title}</a> </h1></Link>
@@ -32,16 +31,22 @@ export default function Post({data}) {
           __html: data.description,
         }}/> </p>
             <div className="flex items-center gap-x-2">
-              <Image
-                src="/img/profile-user.svg"
+              {data?.authorDetails?.ProfileImage==""?
+                <div class="flex items-center justify-center relative h-10 w-10 overflow-hidden rounded-full bg-slate-300">
+                <span className="text-3xxl text-white">{data?.authorDetails?.FirstName?.[0]}</span>
+               </div>:<Image
+              loader={imageLoader}
+                src={data?.authorDetails?.ProfileImage}
                 alt="spurtCMS Profile Image"
                 className="dark:invert"
                 width={32}
                 height={32}
                 priority
               />
+              }
+              
               <div className="">
-                <a  className="text-primary text-base"> Sasha Bondar </a>
+                <a  className="text-primary text-base"> {data?.authorDetails?.FirstName} {data?.authorDetails?.LastName} </a>
               </div>
             </div>
           </div>
