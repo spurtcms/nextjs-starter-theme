@@ -18,7 +18,7 @@ export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$lim
           LastName
           Email
           MobileNo
-          ProfileImage
+          ProfileImagePath
         }
       }
       count
@@ -56,7 +56,7 @@ export const GET_POSTS_SLUG_QUERY = `query($channelEntryId: Int!){
           LastName
           Email
           MobileNo
-          ProfileImage
+          ProfileImagePath
         }
       }
     }

@@ -14,7 +14,7 @@ export default function Detail({params}) {
   const [postesMore,setPostesMore]=useState([])
   let {slug}=params
   useEffect(()=>{
-    let variable_list={ "limit": 10, "offset": 0}
+    let variable_list={ "limit": 10, "offset": 0,channelId:72}
     let variable_slug={ "limit": 10, "offset": 0,"channelEntryId": slug}
 
     fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug,setPostes)
@@ -45,17 +45,18 @@ const handlePostesMore=(data)=>{
           </nav>
           <h1 className="text-4xl2 text-black font-bold mb-4">{postes?.channelEntryDetail?.title}</h1>
           <div className="flex items-center gap-x-2 mb-6">
-          {postes?.channelEntryDetail?.authorDetails?.ProfileImage==""?<div class="flex items-center justify-center relative h-10 w-10 overflow-hidden rounded-full bg-slate-300">
+          <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
+          {postes?.channelEntryDetail?.authorDetails?.ProfileImagePath==""?
                   <span className="text-3xxl text-white">{postes?.channelEntryDetail?.authorDetails?.FirstName?.[0]}</span>
-                 </div>: <Image
+                : <Image
                 loader={imageLoader}
-                src={postes?.channelEntryDetail?.authorDetails?.ProfileImage}
+                src={postes?.channelEntryDetail?.authorDetails?.ProfileImagePath}
                   alt="spurtCMS Profile Image"
                   className="dark:invert"
                   width={32}
                   height={32}
                   priority
-                />}
+                />} </div>
             <div className="">
               <a  className="text-primary text-base"> {postes?.channelEntryDetail?.authorDetails?.FirstName} {postes?.channelEntryDetail?.authorDetails?.LastName}  </a>
             </div>
@@ -89,7 +90,7 @@ const handlePostesMore=(data)=>{
               
           </div>
           <div class="mt-10 mb-10 flex justify-center">
-           {postesMore?.channelEntriesList?.channelEntriesList?.length >3&&  <Link href={"/view-all-posts?page=0"} className="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 cursor-pointer"><span>View all Posts</span></Link>
+           {postesMore?.channelEntriesList?.channelEntriesList?.length >2&&  <Link href={"/view-all-posts?page=0"} className="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 cursor-pointer"><span>View all Posts</span></Link>
 
            }
          

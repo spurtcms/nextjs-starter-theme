@@ -36,13 +36,13 @@ export default function NavBar({postes,activeIndex,setActiveIndex}) {
     };
     useEffect(()=>{
         if(scrl.current){
-         
             if (
                 Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <=
                 scrl.current.offsetWidth
               ) {
                 setscrolEnd(true);
               } else {
+              
                 setscrolEnd(false);
               }
         }
@@ -50,14 +50,14 @@ export default function NavBar({postes,activeIndex,setActiveIndex}) {
 
   return (
    <>
-   <div className="flex flex-nowrap flex-row gap-x-2 pb-4 mb-4 justify-start items-center ">
+   <div className="flex flex-nowrap flex-row gap-x-2 pb-4 mb-4 justify-start items-center relative">
    {scrollX !== 0 && (
         <button
           onClick={() => slide(-50)}
-          class="w-8 h-8"
+          class="w-2 h-2 absolute top-[0.625rem] left-[-1.438rem]"
         >
-          <Image src="/img/arrow-left-colour.svg" alt="arrow-left" class="w-6 h-6" width={32}
-                  height={32}
+          <Image src="/img/arrow-left-colour.svg" alt="arrow-left" width={15}
+                  height={15}
                   priority />
         </button>
      )} 
@@ -79,10 +79,10 @@ export default function NavBar({postes,activeIndex,setActiveIndex}) {
   {!scrolEnd && (
         <button
           onClick={() => slide(+50)}
-          class="w-8 h-8"
+          class="w-2 h-2 absolute top-[0.625rem] right-[-1.438rem]"
         >
-         <Image src="/img/arrow-right-colour.svg" alt="arrow-right" class="w-6 h-6" width={32}
-                  height={32}
+         <Image src="/img/arrow-right-colour.svg" alt="arrow-right" width={15}
+                  height={15}
                   priority />
         </button>
       )}

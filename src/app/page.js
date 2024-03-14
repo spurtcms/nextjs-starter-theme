@@ -21,7 +21,7 @@ const router =useRouter()
     if(activeIndex==0){
       variable_list={ "limit": 10, "offset": 0}
     }else{
-     variable_list={ "limit": 10, "offset": 0,channelId:72,categoryId:activeIndex}
+     variable_list={ "limit": 10, "offset": 0,categoryId:activeIndex}
     }
    
     let variable_category={"hierarchylevel": 0}
@@ -74,18 +74,19 @@ const router =useRouter()
               <h1 className="text-4xl2 font-bold text-black line-clamp-2 cursor-pointer" onClick={()=>handleNavigation(bannerShow?.[0]?.id)}>{bannerShow?.[0]?.title}</h1>
               <p className="text-base text-black my-3">{moment(bannerShow?.[0]?.createdOn).format("MMM DD, YYYY")}</p>
               <div className="flex items-center gap-x-2">
-                {bannerShow?.[0]?.authorDetails?.ProfileImage==""?<div class="flex items-center justify-center relative h-10 w-10 overflow-hidden rounded-full bg-slate-300">
+              <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
+                {bannerShow?.[0]?.authorDetails?.ProfileImagePath==""?
                   <span className="text-3xxl text-white">{bannerShow?.[0]?.authorDetails?.FirstName?.[0]}</span>
-                 </div>: <Image
+                : <Image
                 loader={imageLoader}
-                src={bannerShow?.[0]?.authorDetails?.ProfileImage}
+                src={`${bannerShow?.[0]?.authorDetails?.ProfileImagePath}`}
                   alt="spurtCMS Profile Image"
                   className="dark:invert"
                   width={32}
                   height={32}
                   priority
                 />}
-               
+                </div>
                 <div className="">
                   <a  className="text-primary text-base">{bannerShow?.[0]?.authorDetails?.FirstName} {bannerShow?.[0]?.authorDetails?.LastName} </a>
                 </div>
@@ -100,7 +101,7 @@ const router =useRouter()
         </div>}
         
         {/* banner */}
-        <div className="md:lg-0 px-4">         
+        <div className="md:lg-0">         
           
           {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>}
           
@@ -124,7 +125,7 @@ const router =useRouter()
               ))}
            
           </div>
-          {postes?.channelEntriesList?.channelEntriesList?.length>7&& 
+          {postes?.channelEntriesList?.channelEntriesList?.length>6&& 
           <div class="mt-10 mb-10 flex justify-center">
            
            <Link href={"/view-all-posts?page=0"} className="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 cursor-pointer"><span>View all Posts</span></Link>

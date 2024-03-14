@@ -31,12 +31,13 @@ export default function Post({data}) {
           __html: data.description,
         }}/> </p>
             <div className="flex items-center gap-x-2">
-              {data?.authorDetails?.ProfileImage==""?
-                <div class="flex items-center justify-center relative h-10 w-10 overflow-hidden rounded-full bg-slate-300">
+            <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
+              {data?.authorDetails?.ProfileImagePath==""?
+                
                 <span className="text-3xxl text-white">{data?.authorDetails?.FirstName?.[0]}</span>
-               </div>:<Image
+              : <Image
               loader={imageLoader}
-                src={data?.authorDetails?.ProfileImage}
+                src={`${data?.authorDetails?.ProfileImagePath}`}
                 alt="spurtCMS Profile Image"
                 className="dark:invert"
                 width={32}
@@ -44,7 +45,7 @@ export default function Post({data}) {
                 priority
               />
               }
-              
+               </div>
               <div className="">
                 <a  className="text-primary text-base"> {data?.authorDetails?.FirstName} {data?.authorDetails?.LastName} </a>
               </div>
