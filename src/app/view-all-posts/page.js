@@ -5,6 +5,7 @@ import Post from '../components/Post';
 import Image from 'next/image';
 import { GET_POSTS_LIST_QUERY } from '../api/query';
 import { useRouter, useSearchParams } from 'next/navigation';
+import ViewAllSkeleton from '../utilities/Skeleton/ViewAllSkeleton';
 
 
 export default function ViewAllPosts() {
@@ -12,9 +13,10 @@ export default function ViewAllPosts() {
   const router=useRouter()
   let page=params.get("page")
     const [postes,setPostes]=useState([])
+    const [loader,setLoader]=useState(false)
     useEffect(()=>{
       let varia={ "limit": 6, "offset": page}
-      fetchGraphQl(GET_POSTS_LIST_QUERY,varia,setPostes)
+      fetchGraphQl(GET_POSTS_LIST_QUERY,varia,setPostes,setLoader)
     },[page])
     const handlePrevious=()=>{
       let nextPage=parseInt(page)-6
@@ -28,13 +30,18 @@ export default function ViewAllPosts() {
   return (
     <>
 
-    <div className="md:lg-0 px-4">  
+    <div className="md:lg-0">  
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8  mb-10">
-    {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+      {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
       
-        <Post data={data}/>
-     
-            ))}
+      <Post data={data} activeIndex={0}/>
+   
+          ))}</>:
+          <>
+          <ViewAllSkeleton />
+          </>
+          } 
+   
             </div>
             {postes?.channelEntriesList?.count >6&&
             <div class="mb-10 flex items-center justify-center">

@@ -1,37 +1,45 @@
 'use client'
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { fetchGraphQl } from "./api/graphicql";
 import Post from "./components/Post";
 import NavBar from "./components/NavBar";
 import Link from "next/link";
 import {GET_POSTS_LIST_QUERY,GET_POSTS_CATEGORYLIST_QUERY } from "./api/query";
-import moment from "moment";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
+import BannerSkeleton from "./utilities/Skeleton/BannerSkeleton";
+import Banner from "./components/Banner";
+import ViewAllSkeleton from "./utilities/Skeleton/ViewAllSkeleton";
 
 export default function Home() {
 
 const router =useRouter()
+const searchParams = useSearchParams()
   const [postes,setPostes]=useState([])
   const [postesCategory,setPostesCategory]=useState([])
   const [bannerShow,setBannerShow]=useState([])
-  const [activeIndex,setActiveIndex]=useState(0)
+  const [activeIndex,setActiveIndex]=useState(null)
+  const [scrollX, setscrollX] = useState(0);
+  const [loader,setLoader]=useState(false)
+  let cateId=searchParams.get("cateId")
   useEffect(()=>{
     let variable_list
-    if(activeIndex==0){
-      variable_list={ "limit": 10, "offset": 0}
+    if(cateId==null){
+        variable_list={ "limit": 10, "offset": 0}
     }else{
-     variable_list={ "limit": 10, "offset": 0,categoryId:activeIndex}
+      setActiveIndex(cateId)
+
+     variable_list={ "limit": 10, "offset": 0,categoryId:cateId}
+
     }
    
-    let variable_category={"hierarchylevel": 0}
-    fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list,handlePostesMore) 
-    if(activeIndex==0){
-      fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category,setPostesCategory)
-    } 
-    
-  },[activeIndex])
+    fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list,handlePostesMore,setLoader) 
   
+  },[cateId])
+  useEffect(()=>{
+    let variable_category={"hierarchylevel": 0}
+    fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category,setPostesCategory,setLoader)
+
+  },[])
   
   const handlePostesMore=(data)=>{
         let listEntry=[]
@@ -50,68 +58,25 @@ const router =useRouter()
     setPostes(data)
     setBannerShow(banner)
   }
-  const imageLoader = ({src}) => {
-    return src
-  }
-  const handleNavigation=(id)=>{
-    router.push(`/posts/${id}`)
-  }
+ 
+
   return (
     <>
-    {bannerShow?.length !=0&&<div className="block">
-            <Image
-            loader={imageLoader}
-              src={bannerShow?.[0]?.coverImage}
-              alt="spurtCMS Banner"
-              className="dark:invert cursor-pointer"
-              width={12000}
-              height={1000}
-              priority
-              onClick={()=>handleNavigation(bannerShow?.[0]?.id)}
-            />
-            <div className="flex sm:flex-nowrap flex-wrap mt-8 gap-x-2 gap-y-4 pb-10 mb-8 border-b border-gray-200">
-            <div className="w-full max-w-full mt-0 w-full sm:w-7/12">
-              <h1 className="text-4xl2 font-bold text-black line-clamp-2 cursor-pointer" onClick={()=>handleNavigation(bannerShow?.[0]?.id)}>{bannerShow?.[0]?.title}</h1>
-              <p className="text-base text-black my-3">{moment(bannerShow?.[0]?.createdOn).format("MMM DD, YYYY")}</p>
-              <div className="flex items-center gap-x-2">
-              <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
-                {bannerShow?.[0]?.authorDetails?.ProfileImagePath==""?
-                  <span className="text-3xxl text-white">{bannerShow?.[0]?.authorDetails?.FirstName?.[0]}</span>
-                : <Image
-                loader={imageLoader}
-                src={`${bannerShow?.[0]?.authorDetails?.ProfileImagePath}`}
-                  alt="spurtCMS Profile Image"
-                  className="dark:invert"
-                  width={32}
-                  height={32}
-                  priority
-                />}
-                </div>
-                <div className="">
-                  <a  className="text-primary text-base">{bannerShow?.[0]?.authorDetails?.FirstName} {bannerShow?.[0]?.authorDetails?.LastName} </a>
-                </div>
-              </div>
-            </div>
-            <div className="w-full max-w-full w-full sm:w-5/12">
-              <p className="text-lg text-black font-light line-clamp-4"><div  dangerouslySetInnerHTML={{
-          __html: bannerShow?.[0]?.description,
-        }}/> </p>
-            </div>
-          </div>
-        </div>}
+    {loader==true?<Banner bannerShow={bannerShow}router={router}/>:<BannerSkeleton />}
+    
+   
         
-        {/* banner */}
         <div className="md:lg-0">         
           
-          {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} activeIndex={activeIndex} setActiveIndex={setActiveIndex}/>}
+          {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
           
-          {/* nav */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
-          {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+            {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
           index<4&&
-           <Post data={data}/>
+           <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />
 
-          ))}
+          ))}</>:<ViewAllSkeleton />}
+         
           </div>
           <>
           {postes?.channelEntriesList?.channelEntriesList?.length>4&&<>
@@ -119,10 +84,11 @@ const router =useRouter()
           <h1 className="text-3xxl font-bold text-black mb-10"> More Stories </h1>
         
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
-          {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+          {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
           index>=4&&index<6&&
-          <Post data={data}/>
-              ))}
+          <Post data={data} activeIndex={0} />
+              ))}</>:<ViewAllSkeleton />}
+         
            
           </div>
           {postes?.channelEntriesList?.channelEntriesList?.length>6&& 

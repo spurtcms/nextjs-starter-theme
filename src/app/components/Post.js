@@ -2,14 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import moment from "moment";
 import Image from 'next/image';
-export default function Post({data}) {
+export default function Post({data,activeIndex,scrollX}) {
     const imageLoader = ({src}) => {
         return src
       }
   return (
    <>
+
     <div>
-            <Link href={`/posts/${data.id}`}>
+            <Link href={activeIndex==null?`/posts/${data.id}`:`/posts/${data.id}?cateId=${activeIndex}&scroll=${scrollX}`}>
             <a  className="mb-6 block">
             <Image
             loader={imageLoader}

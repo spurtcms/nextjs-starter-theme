@@ -15,12 +15,13 @@ async function fetchGraphQLData(GET_POSTS_QUERY,varia) {
   }
 }
 
-export const fetchGraphQl = async (GET_POSTS_QUERY,varia,setPostes) => {
+export const fetchGraphQl = async (GET_POSTS_QUERY,varia,setPostes,setLoader) => {
 
   try {
     const entries = await fetchGraphQLData(GET_POSTS_QUERY,varia);
     
     setPostes(entries.data)
+    setLoader(true)
   } catch (error) {
     throw error;
   }
