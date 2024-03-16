@@ -18,7 +18,6 @@ export default function Detail({params}) {
   const [loader,setLoader]=useState(false)
   let cateId=searchParams.get("cateId")
   let scrollX=searchParams.get("scroll")
-  console.log(cateId,'cateId');
   let {slug}=params
   useEffect(()=>{
     let variable_list={ "limit": 10, "offset": 0,channelId:72}

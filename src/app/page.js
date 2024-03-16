@@ -22,8 +22,10 @@ const searchParams = useSearchParams()
   const [loader,setLoader]=useState(false)
   let cateId=searchParams.get("cateId")
   useEffect(()=>{
+    console.log(activeIndex,'activeIndex232323');
     let variable_list
     if(cateId==null){
+      setActiveIndex(cateId)
         variable_list={ "limit": 10, "offset": 0}
     }else{
       setActiveIndex(cateId)
@@ -62,7 +64,8 @@ const searchParams = useSearchParams()
 
   return (
     <>
-    {loader==true?<Banner bannerShow={bannerShow}router={router}/>:<BannerSkeleton />}
+    {loader==true?
+    <Banner bannerShow={bannerShow}router={router}/>:<BannerSkeleton />}
     
    
         
@@ -71,6 +74,7 @@ const searchParams = useSearchParams()
           {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
+            
             {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
           index<4&&
            <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />

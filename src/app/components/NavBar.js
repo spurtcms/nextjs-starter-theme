@@ -1,7 +1,6 @@
 'use client'
 import React, { useEffect } from 'react'
 import { useState, useRef } from "react";
-import { fetchGraphQl } from '../api/graphicql';
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 
@@ -41,6 +40,10 @@ export default function NavBar({postes,activeIndex,setActiveIndex,setscrollX,scr
      if(scroll !=null){
       if(scrl.current){
         scrl.current.scrollLeft = scroll;
+      }
+     }else{
+      if(scrl.current){
+        scrl.current.scrollLeft = 0;
       }
      }
     },[scroll,scrl])
