@@ -10,7 +10,7 @@ export default function Post({data,activeIndex,scrollX}) {
    <>
 
     <div>
-            <Link href={activeIndex==null?`/posts/${data.id}`:`/posts/${data.id}?cateId=${activeIndex}&scroll=${scrollX}`}>
+            <Link href={activeIndex==null?`/posts/${data.slug}`:`/posts/${data.slug}?cateId=${activeIndex}&scroll=${scrollX}`}>
             <a  className="mb-6 block">
             <Image
             loader={imageLoader}

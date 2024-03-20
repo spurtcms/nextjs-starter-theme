@@ -39,8 +39,8 @@ export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$lim
   `;
 
   
-export const GET_POSTS_SLUG_QUERY = `query($channelEntryId: Int!){
-    channelEntryDetail(channelEntryId:$channelEntryId){
+export const GET_POSTS_SLUG_QUERY = `query($slug: String!){
+    channelEntryDetail(slug:$slug){
         id
         title
         slug

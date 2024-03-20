@@ -21,7 +21,7 @@ export default function PostsPage({params}) {
   let {slug}=params
   useEffect(()=>{
     let variable_list={ "limit": 10, "offset": 0,channelId:72}
-    let variable_slug={ "limit": 10, "offset": 0,"channelEntryId": slug}
+    let variable_slug={ "limit": 10, "offset": 0,"slug": slug}
 
     fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug,setPostes,setLoader)
     fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list,handlePostesMore,setLoader)

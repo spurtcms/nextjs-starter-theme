@@ -23,11 +23,10 @@ const searchParams = useSearchParams()
   const [loader,setLoader]=useState(false)
   let cateId=searchParams.get("cateId")
   useEffect(()=>{
-    console.log(activeIndex,'activeIndex232323');
     let variable_list
     if(cateId==null){
       setActiveIndex(cateId)
-        variable_list={ "limit": 10, "offset": 0}
+        variable_list={ "limit": 10, "offset": 0,channelId:72}
     }else{
       setActiveIndex(cateId)
 
