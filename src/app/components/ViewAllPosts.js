@@ -49,7 +49,6 @@ export default function ViewAllPostsComp() {
             <Image
                   src="/img/arrow-left-colour.svg"
                   alt="spurtCMS Profile Image"
-                  className="dark:invert"
                   width={5}
                   height={5}
                   priority
@@ -57,7 +56,6 @@ export default function ViewAllPostsComp() {
                    <Image
                   src="/img/arrow-right-colour.svg"
                   alt="spurtCMS Profile Image"
-                  className="dark:invert"
                   width={5}
                   height={5}
                   priority

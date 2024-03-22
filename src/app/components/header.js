@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import ThemeSwitch from "../utilities/Theme/ThemeSwitch";
 
 export default function Header() {
   return (
-    <header className="md:py-8 sm:py-4 lg:px-0 px-4 py-4">
+    <header className="flex items-center justify-between md:py-8 sm:py-4 lg:px-0 px-4 py-4">
           <Link href={"/"}>
             
             <Image
@@ -14,6 +15,7 @@ export default function Header() {
               height={32}
               priority
             /></Link>
+             <ThemeSwitch />
           
     </header>
   );

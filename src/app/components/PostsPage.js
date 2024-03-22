@@ -58,7 +58,6 @@ const handlePostesMore=(data)=>{
                 loader={imageLoader}
                 src={postes?.channelEntryDetail?.authorDetails?.ProfileImagePath}
                   alt="spurtCMS Profile Image"
-                  className="dark:invert"
                   width={32}
                   height={32}
                   priority
@@ -72,7 +71,6 @@ const handlePostesMore=(data)=>{
              loader={imageLoader}
               src={postes?.channelEntryDetail?.coverImage}
               alt="spurtCMS Banner"
-              className="dark:invert"
               width={12000}
               height={1000}
               priority
@@ -84,7 +82,7 @@ const handlePostesMore=(data)=>{
          
          
           <p className="text-base text-black mb-1">{moment(postes?.channelEntryDetail?.createdOn).format("MMM DD, YYYY")} </p>
-          <div className="text-lg text-black font-light leading-normal mb-6" dangerouslySetInnerHTML={{
+          <div className="text-lg text-current font-light leading-normal mb-6" dangerouslySetInnerHTML={{
             __html: postes?.channelEntryDetail?.description,
           }}/>
           {postesMore?.channelEntriesList?.channelEntriesList?.length !=0&&<><div className="border-b border-gray-200 block mb-8 mt-10"></div>

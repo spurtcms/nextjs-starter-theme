@@ -18,7 +18,7 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: white;
+  /* background: white; */
 }
 
 .text-3xxl {
@@ -42,4 +42,11 @@ body {
   -webkit-appearance: none;
   width: 0;
   height: 0;
+}
+
+.dark .text-black{
+  color: #ffffff;
+}
+.dark .text-current{
+  color: rgb(156 163 175);
 }

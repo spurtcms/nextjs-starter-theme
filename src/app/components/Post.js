@@ -16,7 +16,6 @@ export default function Post({data,activeIndex,scrollX}) {
             loader={imageLoader}
                 src={data.coverImage}
                 alt="spurtCMS card image"
-                className="dark:invert"
                 width={1000}
                 height={1000}
                 priority
@@ -28,9 +27,9 @@ export default function Post({data,activeIndex,scrollX}) {
             </a>
             <h1 className="text-3xxl font-bold line-clamp-2"> <a  className="text-black hover:underline  leading-[2.625rem] line-clamp-2">{data.title}</a> </h1></Link>
             <p className="text-base text-black my-3">{moment(data.createdOn).format("MMM DD, YYYY")} </p>
-            <p className="text-lg text-black font-light line-clamp-3 mb-3 "><div  dangerouslySetInnerHTML={{
+            <p className="text-lg text-current  font-light line-clamp-3 mb-3 " dangerouslySetInnerHTML={{
           __html: data.description,
-        }}/> </p>
+        }}></p>
             <div className="flex items-center gap-x-2">
             <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
               {data?.authorDetails?.ProfileImagePath==""?
@@ -40,7 +39,6 @@ export default function Post({data,activeIndex,scrollX}) {
               loader={imageLoader}
                 src={`${data?.authorDetails?.ProfileImagePath}`}
                 alt="spurtCMS Profile Image"
-                className="dark:invert"
                 width={32}
                 height={32}
                 priority

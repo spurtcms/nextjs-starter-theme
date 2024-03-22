@@ -17,7 +17,7 @@ export default function Banner({bannerShow,router}) {
             loader={imageLoader}
               src={bannerShow?.[0]?.coverImage}
               alt="spurtCMS Banner"
-              className="dark:invert cursor-pointer"
+              className="cursor-pointer"
               width={1200}
               height={1000}
               priority
@@ -35,7 +35,6 @@ export default function Banner({bannerShow,router}) {
                 loader={imageLoader}
                 src={`${bannerShow?.[0]?.authorDetails?.ProfileImagePath}`}
                   alt="spurtCMS Profile Image"
-                  className="dark:invert"
                   width={32}
                   height={32}
                   priority
@@ -47,7 +46,7 @@ export default function Banner({bannerShow,router}) {
               </div>
             </div>
             <div className="w-full max-w-full w-full sm:w-5/12">
-              <p className="text-lg text-black font-light line-clamp-4"><div  dangerouslySetInnerHTML={{
+              <p className="text-lg text-current font-light line-clamp-4"><div  dangerouslySetInnerHTML={{
           __html: bannerShow?.[0]?.description,
         }}/> </p>
             </div>
