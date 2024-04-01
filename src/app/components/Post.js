@@ -6,6 +6,7 @@ export default function Post({data,activeIndex,scrollX}) {
     const imageLoader = ({src}) => {
         return src
       }
+
   return (
    <>
 
@@ -13,7 +14,7 @@ export default function Post({data,activeIndex,scrollX}) {
             <Link href={activeIndex==null?`/posts/${data.slug}`:`/posts/${data.slug}?cateId=${activeIndex}&scroll=${scrollX}`}>
             <a  className="mb-6 block">
             <Image
-            loader={imageLoader}
+                loader={imageLoader}
                 src={data.coverImage}
                 alt="spurtCMS card image"
                 width={1000}
@@ -21,7 +22,7 @@ export default function Post({data,activeIndex,scrollX}) {
                 priority
                 layout="responsive"
                 placeholder="blur"
-                 blurDataURL={data.coverImage}
+                blurDataURL={data.coverImage}
 
               />
             </a>

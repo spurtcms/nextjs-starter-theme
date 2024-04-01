@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { GET_POSTS_LIST_QUERY } from '../api/query';
 import Post from './Post';
 import ViewAllSkeleton from '../utilities/Skeleton/ViewAllSkeleton';
-import { fetchGraphQl } from '../api/graphicql';
+import { fetchGraphQl, fetchGraphQls } from '../api/graphicql';
 
 
 export default function ViewAllPostsComp() {
@@ -14,9 +14,18 @@ export default function ViewAllPostsComp() {
   let page=params.get("page")
     const [postes,setPostes]=useState([])
     const [loader,setLoader]=useState(false)
+
+const apiserver =async()=>{
+  let varia={ "limit": 6, "offset": page}
+
+ let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,varia)
+ setPostes(postdatas)
+  setLoader(true)
+}
+
     useEffect(()=>{
-      let varia={ "limit": 6, "offset": page}
-      fetchGraphQl(GET_POSTS_LIST_QUERY,varia,setPostes,setLoader)
+      apiserver()
+     
     },[page])
     const handlePrevious=()=>{
       let nextPage=parseInt(page)-6
@@ -26,7 +35,6 @@ export default function ViewAllPostsComp() {
       let nextPage=parseInt(page)+6
       router.push(`/view-all-posts?page=${nextPage}`)
     }
-
   return (
     <>
 

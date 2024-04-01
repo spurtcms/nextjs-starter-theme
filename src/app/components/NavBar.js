@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-export default function NavBar({postes,activeIndex,setActiveIndex,setscrollX,scrollX}) {
+export default function NavBar({postes,setBannerShow,activeIndex,setActiveIndex,setscrollX,scrollX}) {
   const searchParams = useSearchParams()
   const router =useRouter()
     let scrl = useRef(null);
@@ -62,6 +62,7 @@ export default function NavBar({postes,activeIndex,setActiveIndex,setscrollX,scr
     },[scrl])
 const handleActive=(id)=>{
   setActiveIndex(id)
+  setBannerShow([])
   if(id==null){
     router.push(`/`)
   }else{
@@ -69,6 +70,7 @@ const handleActive=(id)=>{
   }
   
 }
+
   return (
    <>
    <div className="flex flex-nowrap flex-row gap-x-2 pb-4 mb-4 justify-start items-center relative">

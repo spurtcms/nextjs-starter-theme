@@ -4,6 +4,8 @@ export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$lim
       channelEntriesList{
         id
         title
+        metaTitle
+        metaDescription
         slug
         description
         userId

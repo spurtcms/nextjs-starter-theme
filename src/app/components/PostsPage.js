@@ -10,7 +10,7 @@ import { useSearchParams } from "next/navigation";
 import PostSkeleton from "@/app/utilities/Skeleton/PostSkeleton";
 import ViewAllSkeleton from "@/app/utilities/Skeleton/ViewAllSkeleton";
 
-export default function PostsPage({params}) {
+export default function PostsPage({params,Listdata,slugdata}) {
 
   const searchParams = useSearchParams()
   const [postes,setPostes]=useState([])
@@ -20,24 +20,32 @@ export default function PostsPage({params}) {
   let scrollX=searchParams.get("scroll")
   let {slug}=params
   useEffect(()=>{
-    let variable_list={ "limit": 10, "offset": 0,channelId:72}
-    let variable_slug={ "limit": 10, "offset": 0,"slug": slug}
+    // let variable_list={ "limit": 10, "offset": 0,channelId:72}
+    // let variable_slug={ "limit": 10, "offset": 0,"slug": slug}
 
-    fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug,setPostes,setLoader)
-    fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list,handlePostesMore,setLoader)
+    // fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug,setPostes,setLoader)
+    // fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list,handlePostesMore,setLoader)
   },[slug])
-const handlePostesMore=(data)=>{
 
-  let sdata=data?.channelEntriesList?.channelEntriesList?.filter((s,i)=>s.id !=slug)
+const handlePostesMore=()=>{
+
+  let sdata=Listdata?.channelEntriesList?.channelEntriesList?.filter((s,i)=>s.id !=slug)
   if(sdata?.length){
-    data.channelEntriesList.channelEntriesList=sdata
+    Listdata.channelEntriesList.channelEntriesList=sdata
 
   }
-  setPostesMore(data)
+  setPostesMore(Listdata)
+  setPostes(slugdata)
 }
+
   const imageLoader = ({src}) => {
     return src
   }
+
+  useEffect(()=>{
+    handlePostesMore()
+    setLoader(true)
+  },[])
   return (
     <>
       

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from "../api/query";
+import { GET_POSTS_LIST_QUERY } from "../api/query";
 import { fetchGraphQl } from "../api/graphicql";
 import Banner from "./Banner";
 import BannerSkeleton from "../utilities/Skeleton/BannerSkeleton";
@@ -11,18 +11,23 @@ import ViewAllSkeleton from "../utilities/Skeleton/ViewAllSkeleton";
 import Post from "./Post";
 
 
-export default function HomePage() {
+export default function HomePage({Listdata}) {
 
 const router =useRouter()
 const searchParams = useSearchParams()
   const [postes,setPostes]=useState([])
-  const [postesCategory,setPostesCategory]=useState([])
+  const [postesCategory,setPostesCategory]=useState(Listdata)
   const [bannerShow,setBannerShow]=useState([])
   const [activeIndex,setActiveIndex]=useState(null)
   const [scrollX, setscrollX] = useState(0);
   const [loader,setLoader]=useState(false)
+  const [triger,setTriger]=useState(0)
   let cateId=searchParams.get("cateId")
-  useEffect(()=>{
+
+ 
+
+
+  const apiserver =async()=>{
     let variable_list
     if(cateId==null){
       setActiveIndex(cateId)
@@ -33,50 +38,55 @@ const searchParams = useSearchParams()
      variable_list={ "limit": 10, "offset": 0,categoryId:cateId}
 
     }
-   
-    fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list,handlePostesMore,setLoader) 
   
+   let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
+   setPostes(postdatas)
+   setLoader(true)
+  }
+
+  useEffect(()=>{
+    apiserver()
+    
   },[cateId])
   useEffect(()=>{
-    let variable_category={"hierarchylevel": 0}
-    fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category,setPostesCategory,setLoader)
-
-  },[])
-  
-  const handlePostesMore=(data)=>{
-        let listEntry=[]
-        let banner=[]
-    data?.channelEntriesList?.channelEntriesList?.map((s,i)=>{
-     if(s.featuredEntry==1){
-      banner.push(s)
-     }else{
-      listEntry.push(s)
-     }
-    })
-    if(listEntry.length){
-      data.channelEntriesList.channelEntriesList=listEntry
-    }
+    handlePostesMore()
    
-    setPostes(data)
+  },[postes])
+
+const handlePostesMore=()=>{
+      let listEntry=[]
+      let banner=[]
+      postes?.channelEntriesList?.channelEntriesList?.map((data,i)=>{
+   if(data.featuredEntry==1){ 
+    banner.push(data)
     setBannerShow(banner)
+    
+   }else{
+    listEntry.push(data)
+   }
+  })
+  if(listEntry.length){
+    postes.channelEntriesList.channelEntriesList=listEntry
   }
- 
+
+  }
+
 
   return (
     <>
     {loader==true?
-    <Banner bannerShow={bannerShow}router={router}/>:<BannerSkeleton />}
+      <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />}
     
    
         
         <div className="md:lg-0">         
           
-          {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
+          {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} setBannerShow={setBannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
             
             {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
-          index<4&&
+           index<4&&
            <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />
 
           ))}</>:<ViewAllSkeleton />}
