@@ -38,8 +38,8 @@ Use the Deploy Button below, you'll deploy the example using
 
 ## Set up environment variables
 
-Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. For example:
- https://graphql.spurtcms.com/query
+Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
+For example: https://graphql.spurtcms.com/query
 
 Your env should look like this:
 
@@ -62,12 +62,17 @@ Setup SpurtCMS Admin Console for Manage or Populate content
 spurtCMS prioritizes user-friendly administration, offering powerful tools for content creation, management, and defining CMS workspaces. Administrators have precise control over member access, ensuring streamlined member management. Dynamic channel management allows effective content structuring, enhancing the overall user experience. Administrators effortlessly create and manage channels and spaces, providing a comprehensive, user-centric content management solution for personalized and organized web
 environments.
 ## Screenshots of spurtCMSAdmin
+
 Dashboard
 
 ![Screenshot of spurtCMS dashboars](https://spurtcms.com/github-banner/dashboard.png)
+
 Channels
+
 ![Screenshot of spurtCMS channels](https://spurtcms.com/github-banner/channelentries.png)
+
 Spaces
+
 ![Screenshot of spurtCMS spaces](https://spurtcms.com/github-banner/space.png)
 
 Blog
