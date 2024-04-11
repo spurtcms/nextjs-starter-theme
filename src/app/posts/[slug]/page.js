@@ -1,48 +1,8 @@
-import { Suspense } from "react";
-import PostsPage from "@/app/components/PostsPage";
-import { fetchGraphQl } from "@/app/api/graphicql";
-import { GET_POSTS_LIST_QUERY, GET_POSTS_SLUG_QUERY } from "@/app/api/query";
+import { PostServerAction } from "@/app/components/Posts";
 
-export async function generateMetadata({params}) {
-
-  let variable_lista={ "limit": 10, "offset": 0,channelId:72}
-  const dtas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_lista)
- let title=''
- let description=''
- dtas?.channelEntriesList?.channelEntriesList.map((response)=>{
-  
-    if(response.slug==params.slug){
-      title = response.metaTitle
-      description=response.metaDescription
-    }
-  })
-  return {
-    title,
-    description,
-  };
- 
-}
-
-
-
-
-export default async function Posts({params}) {
-
-  let variable_list={ "limit": 10, "offset": 0,channelId:72}
-const Listdata=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
-
-
-let variable_slug={ "limit": 10, "offset": 0,"slug": params.slug}
-
-const slugdata=await fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug)
-
-
+export default function Posts({params}) {
 
   return (
-    <>
-     <Suspense fallback={null}>
-    <PostsPage params={params} Listdata={Listdata} slugdata={slugdata}/>
-    </Suspense>
-    </>
+ <PostServerAction params={params}/>
   );
 }

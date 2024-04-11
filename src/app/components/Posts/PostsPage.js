@@ -1,14 +1,12 @@
 'use client'
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { fetchGraphQl } from "@/app/api/graphicql";
 import Link from "next/link";
 import moment from "moment";
-import Post from "@/app/components/Post";
-import { GET_POSTS_LIST_QUERY, GET_POSTS_SLUG_QUERY } from "@/app/api/query";
 import { useSearchParams } from "next/navigation";
 import PostSkeleton from "@/app/utilities/Skeleton/PostSkeleton";
 import ViewAllSkeleton from "@/app/utilities/Skeleton/ViewAllSkeleton";
+import Post from "../Viewallposts/Post";
 
 export default function PostsPage({params,Listdata,slugdata}) {
 

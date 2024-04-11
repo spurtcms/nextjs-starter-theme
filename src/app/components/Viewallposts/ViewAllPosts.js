@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { GET_POSTS_LIST_QUERY } from '../api/query';
+import { GET_POSTS_LIST_QUERY } from '../../api/query';
 import Post from './Post';
-import ViewAllSkeleton from '../utilities/Skeleton/ViewAllSkeleton';
-import { fetchGraphQl, fetchGraphQls } from '../api/graphicql';
+import ViewAllSkeleton from '../../utilities/Skeleton/ViewAllSkeleton';
+import { fetchGraphQl, fetchGraphQls } from '../../api/graphicql';
 
 
 export default function ViewAllPostsComp() {

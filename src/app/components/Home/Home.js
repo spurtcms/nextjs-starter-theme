@@ -2,13 +2,13 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { GET_POSTS_LIST_QUERY } from "../api/query";
-import { fetchGraphQl } from "../api/graphicql";
-import Banner from "./Banner";
-import BannerSkeleton from "../utilities/Skeleton/BannerSkeleton";
-import NavBar from "./NavBar";
-import ViewAllSkeleton from "../utilities/Skeleton/ViewAllSkeleton";
-import Post from "./Post";
+import { GET_POSTS_LIST_QUERY } from "../../api/query";
+import { fetchGraphQl } from "../../api/graphicql";
+import Banner from "../Banner";
+import BannerSkeleton from "../../utilities/Skeleton/BannerSkeleton";
+import NavBar from "../NavBar";
+import ViewAllSkeleton from "../../utilities/Skeleton/ViewAllSkeleton";
+import Post from "../Viewallposts/Post";
 
 
 export default function HomePage({Listdata}) {
