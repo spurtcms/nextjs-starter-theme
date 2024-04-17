@@ -58,16 +58,19 @@ const handlePostesMore=()=>{
           {loader==true?<> <h1 className="text-4xl2 text-black font-bold mb-4">{postes?.channelEntryDetail?.title}</h1>
           <div className="flex items-center gap-x-2 mb-6">
           <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
-          {postes?.channelEntryDetail?.authorDetails?.ProfileImagePath==""?
-                  <span className="text-3xxl text-white">{postes?.channelEntryDetail?.authorDetails?.FirstName?.[0]}</span>
-                : <Image
+          {postes?.channelEntryDetail?.authorDetails?.ProfileImagePath==""||postes?.channelEntryDetail?.authorDetails?.ProfileImagePath==null?
+                  <span className="text-3xxl text-white">{postes?.channelEntryDetail?.authorDetails?.FirstName==""||postes?.channelEntryDetail?.authorDetails?.FirstName==null?postes?.channelEntryDetail?.authorDetails?.FirstName?.[0]:""}</span>
+                :
+                 <Image
                 loader={imageLoader}
                 src={postes?.channelEntryDetail?.authorDetails?.ProfileImagePath}
                   alt="spurtCMS Profile Image"
                   width={32}
                   height={32}
                   priority
-                />} </div>
+                />
+                } 
+                </div>
             <div className="">
               <a  className="text-primary text-base"> {postes?.channelEntryDetail?.authorDetails?.FirstName} {postes?.channelEntryDetail?.authorDetails?.LastName}  </a>
             </div>

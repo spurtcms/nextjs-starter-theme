@@ -33,9 +33,9 @@ export default function Post({data,activeIndex,scrollX}) {
         }}></p>
             <div className="flex items-center gap-x-2">
             <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
-              {data?.authorDetails?.ProfileImagePath==""?
+              {data?.authorDetails?.ProfileImagePath==""||data?.authorDetails?.ProfileImagePath==null?
                 
-                <span className="text-3xxl text-white">{data?.authorDetails?.FirstName?.[0]}</span>
+                <span className="text-3xxl text-white">{data?.authorDetails?.FirstName==""||data?.authorDetails?.FirstName==null?data?.authorDetails?.FirstName?.[0]:""}</span>
               : <Image
               loader={imageLoader}
                 src={`${data?.authorDetails?.ProfileImagePath}`}
