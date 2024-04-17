@@ -8,6 +8,7 @@ export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$lim
         metaDescription
         slug
         description
+        createdOn
         userId
         channelId
         status
@@ -52,6 +53,7 @@ export const GET_POSTS_SLUG_QUERY = `query($slug: String!){
         status
         isActive
         coverImage
+        createdOn
         categoriesId
         authorDetails{
           FirstName
