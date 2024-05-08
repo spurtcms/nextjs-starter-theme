@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import PostsPage from './PostsPage'
 import { fetchGraphQl } from '@/app/api/graphicql'
 import { GET_POSTS_LIST_QUERY, GET_POSTS_SLUG_QUERY } from '@/app/api/query'
+import { notFound } from 'next/navigation'
 
 export async function generateMetadata({params}) {
 
@@ -32,8 +33,9 @@ export const PostServerAction =async ({params}) => {
     let variable_slug={ "limit": 10, "offset": 0,"slug": params.slug}
     
     const slugdata=await fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug)
-    
-
+    if (!slugdata) {
+      return notFound();
+    }
   return (
     <>
     <Suspense fallback={null}>

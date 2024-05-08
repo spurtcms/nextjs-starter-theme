@@ -13,7 +13,7 @@ export const fetchGraphQl = async (GET_POSTS_QUERY,varia) => {
         variables: varia
       })
     });
-     return entries.data
+     return entries?.data
   } catch (error) {
     throw error;
   }
