@@ -26,7 +26,9 @@ export async function generateMetadata({params}) {
 
 export const PostServerAction =async ({params}) => {
 
-    let variable_list={ "limit": 10, "offset": 0,channelId:72}
+    let variable_list={ "limit": 10, "offset": 0,channelId:72,"requireData": {
+      "authorDetails": true
+    }}
     const Listdata=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
     
     

@@ -1,6 +1,6 @@
 
-export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$limit: Int!,$offset: Int!){
-    channelEntriesList(channelId:$channelId,categoryId:$categoryId,limit:$limit,offset:$offset){
+export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$limit: Int!,$offset: Int!,$requireData:RequireData){
+    channelEntriesList(channelId:$channelId,categoryId:$categoryId,limit:$limit,offset:$offset,requireData:$requireData){
       channelEntriesList{
         id
         title

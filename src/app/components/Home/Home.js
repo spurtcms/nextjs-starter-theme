@@ -31,11 +31,15 @@ const searchParams = useSearchParams()
     let variable_list
     if(cateId==null){
       setActiveIndex(cateId)
-        variable_list={ "limit": 10, "offset": 0,channelId:72}
+        variable_list={ "limit": 10, "offset": 0,channelId:72,"requireData": {
+          "authorDetails": true
+        }}
     }else{
       setActiveIndex(cateId)
 
-     variable_list={ "limit": 10, "offset": 0,categoryId:cateId}
+     variable_list={ "limit": 10, "offset": 0,categoryId:cateId,"requireData": {
+      "authorDetails": true
+    }}
 
     }
   
