@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/.pnp
+.pnp.js
 
 
 # testing
@@ -31,4 +33,3 @@ yarn-error.log*
 .vercel
 package-lock.json
 yarn.lockp
-sitemap*.xml
