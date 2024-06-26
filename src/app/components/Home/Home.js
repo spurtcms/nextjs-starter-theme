@@ -78,8 +78,9 @@ const handlePostesMore=()=>{
 
   return (
     <>
-    {loader==true?
-      <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />}
+    {/* {loader==true? */}
+      <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />
+      {/* } */}
     
    
         
@@ -89,11 +90,14 @@ const handlePostesMore=()=>{
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
             
-            {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+            {/* {loader==true? */}
+            <>
+             {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
            index<4&&
            <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />
 
-          ))}</>:<ViewAllSkeleton />}
+          ))}</>
+           {/* :<ViewAllSkeleton />} */}
          
           </div>
           <>
@@ -102,10 +106,12 @@ const handlePostesMore=()=>{
           <h1 className="text-3xxl font-bold text-black mb-10"> More Stories </h1>
         
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
-          {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+          {/* {loader==true?<> */}
+           {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
           index>=4&&index<6&&
           <Post data={data} activeIndex={0} />
-              ))}</>:<ViewAllSkeleton />}
+              ))}
+              {/* </>:<ViewAllSkeleton />} */}
          
            
           </div>
