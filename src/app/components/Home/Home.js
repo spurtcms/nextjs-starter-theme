@@ -11,11 +11,11 @@ import ViewAllSkeleton from "../../utilities/Skeleton/ViewAllSkeleton";
 import Post from "../Viewallposts/Post";
 
 
-export default function HomePage({Listdata}) {
-
+export default function HomePage({Listdata,postdatas}) {
+  let postes=postdatas
 const router =useRouter()
 const searchParams = useSearchParams()
-  const [postes,setPostes]=useState([])
+  // const [postes,setPostes]=useState([])
   const [postesCategory,setPostesCategory]=useState(Listdata)
   const [bannerShow,setBannerShow]=useState([])
   const [activeIndex,setActiveIndex]=useState(null)
@@ -43,8 +43,8 @@ const searchParams = useSearchParams()
 
     }
   
-   let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
-   setPostes(postdatas)
+  //  let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
+  //  setPostes(postdatas)
    setLoader(true)
   }
 
