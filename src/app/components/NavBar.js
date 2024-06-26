@@ -2,14 +2,14 @@
 import React, { useEffect } from 'react'
 import { useState, useRef } from "react";
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 export default function NavBar({postes,setBannerShow,activeIndex,setActiveIndex,setscrollX,scrollX}) {
-  // const searchParams = useSearchParams()
+  const searchParams = useSearchParams()
   const router =useRouter()
     let scrl = useRef(null);
     const [scrolEnd, setscrolEnd] = useState(true);
-    let scroll=0
+    let scroll=searchParams.get("scroll")
 
     const slide = (shift) => {
       scrl.current.scrollLeft += shift;
