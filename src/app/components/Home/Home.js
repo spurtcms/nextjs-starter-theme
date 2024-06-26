@@ -89,14 +89,14 @@ const handlePostesMore=()=>{
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
             
-            {/* {loader==true?<>  */}
+            {loader==true?<> 
             {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
            index<4&&
            <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />
 
           ))}
-          {/* </>
-          :<ViewAllSkeleton />} */}
+          </>
+          :<ViewAllSkeleton />}
          
           </div>
           <>
@@ -115,7 +115,7 @@ const handlePostesMore=()=>{
           {postes?.channelEntriesList?.channelEntriesList?.length>6&& 
           <div class="mt-10 mb-10 flex justify-center">
            
-           <Link href={"/view-all-posts?page=0"} className="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 cursor-pointer"><span>View all Posts</span></Link>
+           <Link href={"/view-all-posts"} className="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 cursor-pointer"><span>View all Posts</span></Link>
              
              </div>}
          
