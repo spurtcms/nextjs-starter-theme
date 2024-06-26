@@ -1,92 +1,93 @@
 'use client'
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 // import { GET_POSTS_LIST_QUERY } from "../../api/query";
 // import { fetchGraphQl } from "../../api/graphicql";
-import Banner from "../Banner";
-import BannerSkeleton from "../../utilities/Skeleton/BannerSkeleton";
+// import Banner from "../Banner";
+// import BannerSkeleton from "../../utilities/Skeleton/BannerSkeleton";
 import NavBar from "../NavBar";
-import ViewAllSkeleton from "../../utilities/Skeleton/ViewAllSkeleton";
+// import ViewAllSkeleton from "../../utilities/Skeleton/ViewAllSkeleton";
 import Post from "../Viewallposts/Post";
 
 
 export default function HomePage({Listdata,postes}) {
   // let postes=postdatas
-const router =useRouter()
-// const searchParams = useSearchParams()
-  // const [postes,setPostes]=useState([])
-  const [postesCategory,setPostesCategory]=useState(Listdata)
-  const [bannerShow,setBannerShow]=useState([])
-  const [activeIndex,setActiveIndex]=useState(null)
-  const [scrollX, setscrollX] = useState(0);
-  const [loader,setLoader]=useState(false)
-  const [triger,setTriger]=useState(0)
-  let cateId=null
+// const router =useRouter()
+// // const searchParams = useSearchParams()
+//   // const [postes,setPostes]=useState([])
+//   const [postesCategory,setPostesCategory]=useState(Listdata)
+//   const [bannerShow,setBannerShow]=useState([])
+//   const [activeIndex,setActiveIndex]=useState(null)
+//   const [scrollX, setscrollX] = useState(0);
+//   const [loader,setLoader]=useState(false)
+//   const [triger,setTriger]=useState(0)
+//   let cateId=null
 
  
 
 
-  const apiserver =async()=>{
-    let variable_list
-    if(cateId==null){
-      setActiveIndex(cateId)
-        variable_list={ "limit": 10, "offset": 0,"requireData": {
-          "authorDetails": true
-        }}
-    }else{
-      setActiveIndex(cateId)
+//   const apiserver =async()=>{
+//     let variable_list
+//     if(cateId==null){
+//       setActiveIndex(cateId)
+//         variable_list={ "limit": 10, "offset": 0,"requireData": {
+//           "authorDetails": true
+//         }}
+//     }else{
+//       setActiveIndex(cateId)
 
-     variable_list={ "limit": 10, "offset": 0,categoryId:cateId,"requireData": {
-      "authorDetails": true
-    }}
+//      variable_list={ "limit": 10, "offset": 0,categoryId:cateId,"requireData": {
+//       "authorDetails": true
+//     }}
 
-    }
+//     }
   
-  //  let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
-  //  setPostes(postdatas)
-   setLoader(true)
-  }
+//   //  let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
+//   //  setPostes(postdatas)
+//    setLoader(true)
+//   }
 
-  useEffect(()=>{
-    apiserver()
+//   useEffect(()=>{
+//     apiserver()
     
-  },[cateId])
-  useEffect(()=>{
-    handlePostesMore()
+//   },[cateId])
+//   useEffect(()=>{
+//     handlePostesMore()
    
-  },[postes])
+//   },[postes])
 
-const handlePostesMore=()=>{
-      let listEntry=[]
-      let banner=[]
-      postes?.channelEntriesList?.channelEntriesList?.map((data,i)=>{
-   if(data.featuredEntry==1){ 
-    banner.push(data)
-    setBannerShow(banner)
+// const handlePostesMore=()=>{
+//       let listEntry=[]
+//       let banner=[]
+//       postes?.channelEntriesList?.channelEntriesList?.map((data,i)=>{
+//    if(data.featuredEntry==1){ 
+//     banner.push(data)
+//     setBannerShow(banner)
     
-   }else{
-    listEntry.push(data)
-   }
-  })
-  if(listEntry.length){
-    postes.channelEntriesList.channelEntriesList=listEntry
-  }
+//    }else{
+//     listEntry.push(data)
+//    }
+//   })
+//   if(listEntry.length){
+//     postes.channelEntriesList.channelEntriesList=listEntry
+//   }
 
-  }
-
+//   }
+let activeIndex=0
+let scrollX=0
 
   return (
     <>
     {/* {loader==true? */}
-      <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />
+      {/* <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton /> */}
       {/* } */}
     
    
         
         <div className="md:lg-0">         
           
-          {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} setBannerShow={setBannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
+          {/* {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} setBannerShow={setBannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>} */}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
             
