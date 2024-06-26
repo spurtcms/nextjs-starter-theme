@@ -6,6 +6,7 @@ export default function Post({data,activeIndex,scrollX}) {
     const imageLoader = ({src}) => {
         return src
       }
+      console.log(data,'postes');
 
   return (
    <>

@@ -31,7 +31,7 @@ const searchParams = useSearchParams()
     let variable_list
     if(cateId==null){
       setActiveIndex(cateId)
-        variable_list={ "limit": 10, "offset": 0,channelId:72,"requireData": {
+        variable_list={ "limit": 10, "offset": 0,"requireData": {
           "authorDetails": true
         }}
     }else{
@@ -74,7 +74,6 @@ const handlePostesMore=()=>{
   }
 
   }
-
 
   return (
     <>
