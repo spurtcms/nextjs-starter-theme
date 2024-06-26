@@ -11,11 +11,11 @@ import ViewAllSkeleton from "../../utilities/Skeleton/ViewAllSkeleton";
 import Post from "../Viewallposts/Post";
 
 
-export default function HomePage({Listdata}) {
+export default function HomePage({Listdata,postes}) {
 
 const router =useRouter()
 // const searchParams = useSearchParams()
-  const [postes,setPostes]=useState([])
+  // const [postes,setPostes]=useState([])
   const [postesCategory,setPostesCategory]=useState(Listdata)
   const [bannerShow,setBannerShow]=useState([])
   const [activeIndex,setActiveIndex]=useState(null)
@@ -44,7 +44,7 @@ const router =useRouter()
     }
   
    let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
-   setPostes(postdatas)
+  //  setPostes(postdatas)
    setLoader(true)
   }
 
@@ -78,8 +78,8 @@ const handlePostesMore=()=>{
 
   return (
     <>
-    {loader==true?
-      <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />}
+    {/* {loader==true?
+      <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />} */}
     
    
         
@@ -89,11 +89,13 @@ const handlePostesMore=()=>{
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
             
-            {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+            {/* {loader==true?<> */}
+             {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
            index<4&&
            <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />
 
-          ))}</>:<ViewAllSkeleton />}
+          ))}
+          {/* </>:<ViewAllSkeleton />} */}
          
           </div>
           <>
