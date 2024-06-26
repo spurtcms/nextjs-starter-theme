@@ -23,6 +23,8 @@ const HomeServerAction =async () => {
       <HomePage postdatas={postdatas}/>
       {/* </Suspense> */}
       <Link href={"/view-all-posts"}>view-all-posts</Link> 
+      <br></br>
+      <Link href={"/list-page"}>list-page</Link> 
     </div>
   )
 }
