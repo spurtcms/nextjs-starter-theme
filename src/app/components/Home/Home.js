@@ -78,22 +78,25 @@ const handlePostesMore=()=>{
 
   return (
     <>
-    {loader==true?
+    {/* {loader==true?
       <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />}
-    
+     */}
    
         
         <div className="md:lg-0">         
           
-          {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} setBannerShow={setBannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
+          {/* {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} setBannerShow={setBannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>} */}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
             
-            {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+            {/* {loader==true?<>  */}
+            {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
            index<4&&
            <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />
 
-          ))}</>:<ViewAllSkeleton />}
+          ))}
+          {/* </>
+          :<ViewAllSkeleton />} */}
          
           </div>
           <>
