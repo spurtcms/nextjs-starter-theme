@@ -1,19 +1,20 @@
+'use client'
 import React from 'react'
 import Link from 'next/link'
 import moment from "moment";
-// import Image from 'next/image';
+import Image from 'next/image';
 export default function Post({data,activeIndex,scrollX}) {
-    // const imageLoader = ({src}) => {
-    //     return src
-    //   }
-    //   console.log(data,'postes');
+    const imageLoader = ({src}) => {
+        return src
+      }
+      // console.log(data,'postes');
 
   return (
    <>
 
     <div>
             <Link href={`/posts/${data.slug}`}>
-            {/* <a  className="mb-6 block">
+            <div className="mb-6 block">
             <Image
                 loader={imageLoader}
                 src={data.coverImage}
@@ -26,7 +27,7 @@ export default function Post({data,activeIndex,scrollX}) {
                 blurDataURL={data.coverImage}
 
               />
-            </a> */}
+            </div>
             <h1 className="text-3xxl font-bold line-clamp-2"> <p  className="text-black hover:underline  leading-[2.625rem] line-clamp-2">{data.title}</p> </h1></Link>
             <p className="text-base text-black my-3">{moment(data.createdOn).format("MMM DD, YYYY")} </p>
             {/* <p className="text-lg text-current  font-light line-clamp-3 mb-3 " dangerouslySetInnerHTML={{
