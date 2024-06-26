@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <> 
-   <Link href={"view-all-posts"}>view-all-posts</Link> 
+   <Link href={"/view-all-posts"}>view-all-posts</Link> 
 
     <HomeServerAction/>
     </>
