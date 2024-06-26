@@ -85,7 +85,7 @@ const handlePostesMore=()=>{
         
         <div className="md:lg-0">         
           
-          {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} setBannerShow={setBannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
+          {/* {postesCategory?.categoriesList?.categories&&<NavBar postes={postesCategory} setBannerShow={setBannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>} */}
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
             
