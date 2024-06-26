@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { GET_POSTS_LIST_QUERY } from "../../api/query";
 import { fetchGraphQl } from "../../api/graphicql";
 import Banner from "../Banner";
@@ -14,7 +14,7 @@ import Post from "../Viewallposts/Post";
 export default function HomePage({Listdata}) {
 
 const router =useRouter()
-const searchParams = useSearchParams()
+// const searchParams = useSearchParams()
   const [postes,setPostes]=useState([])
   const [postesCategory,setPostesCategory]=useState(Listdata)
   const [bannerShow,setBannerShow]=useState([])
@@ -22,7 +22,7 @@ const searchParams = useSearchParams()
   const [scrollX, setscrollX] = useState(0);
   const [loader,setLoader]=useState(false)
   const [triger,setTriger]=useState(0)
-  let cateId=searchParams.get("cateId")
+  let cateId=0
 
  
 
@@ -31,7 +31,7 @@ const searchParams = useSearchParams()
     let variable_list
     if(cateId==null){
       setActiveIndex(cateId)
-        variable_list={ "limit": 10, "offset": 0,channelId:72,"requireData": {
+        variable_list={ "limit": 10, "offset": 0,"requireData": {
           "authorDetails": true
         }}
     }else{

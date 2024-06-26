@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+// import React, { Suspense } from 'react'
 import HomePage from './Home'
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from '@/app/api/query'
 import { fetchGraphQl } from '@/app/api/graphicql'
@@ -16,9 +16,9 @@ const HomeServerAction =async () => {
 let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
   return (
     <div>
-        <Suspense fallback={null}>
+        {/* <Suspense fallback={null}> */}
       <HomePage Listdata={Listdata} postes={postdatas}/>
-      </Suspense>
+      {/* </Suspense> */}
     </div>
   )
 }
