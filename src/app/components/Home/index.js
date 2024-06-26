@@ -20,11 +20,12 @@ const HomeServerAction =async () => {
     <div>
        {/* <Link href={"/view-all-posts"}>view-all-posts</Link>  */}
         {/* <Suspense fallback={null}> */}
+        <Link href={"/list-page"}>list-page</Link> 
       <HomePage postdatas={postdatas}/>
       {/* </Suspense> */}
       <Link href={"/view-all-posts"}>view-all-posts</Link> 
-      <br></br>
-      <Link href={"/list-page"}>list-page</Link> 
+    
+    
     </div>
   )
 }
