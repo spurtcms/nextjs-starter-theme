@@ -48,10 +48,10 @@ const router =useRouter()
    setLoader(true)
   }
 
-  // useEffect(()=>{
-  //   apiserver()
+  useEffect(()=>{
+    apiserver()
     
-  // },[cateId])
+  },[cateId])
   useEffect(()=>{
     handlePostesMore()
    
