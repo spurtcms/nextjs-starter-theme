@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { GET_POSTS_LIST_QUERY } from "../../api/query";
 import { fetchGraphQl } from "../../api/graphicql";
 import Banner from "../Banner";
@@ -11,11 +11,11 @@ import ViewAllSkeleton from "../../utilities/Skeleton/ViewAllSkeleton";
 import Post from "../Viewallposts/Post";
 
 
-export default function HomePage({Listdata,postes}) {
+export default function HomePage({Listdata}) {
 
 const router =useRouter()
 // const searchParams = useSearchParams()
-  // const [postes,setPostes]=useState([])
+  const [postes,setPostes]=useState([])
   const [postesCategory,setPostesCategory]=useState(Listdata)
   const [bannerShow,setBannerShow]=useState([])
   const [activeIndex,setActiveIndex]=useState(null)
@@ -44,7 +44,7 @@ const router =useRouter()
     }
   
    let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
-  //  setPostes(postdatas)
+   setPostes(postdatas)
    setLoader(true)
   }
 
