@@ -1,5 +1,5 @@
 'use client'
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 // import { useRouter } from "next/navigation";
 // import { GET_POSTS_LIST_QUERY } from "../../api/query";
@@ -18,40 +18,40 @@ export default function HomePage({Listdata,postes}) {
 //   // const [postes,setPostes]=useState([])
 //   const [postesCategory,setPostesCategory]=useState(Listdata)
 //   const [bannerShow,setBannerShow]=useState([])
-//   const [activeIndex,setActiveIndex]=useState(null)
+  const [activeIndex,setActiveIndex]=useState(null)
 //   const [scrollX, setscrollX] = useState(0);
 //   const [loader,setLoader]=useState(false)
 //   const [triger,setTriger]=useState(0)
-//   let cateId=null
+  let cateId=null
 
  
 
 
-//   const apiserver =async()=>{
-//     let variable_list
-//     if(cateId==null){
-//       setActiveIndex(cateId)
-//         variable_list={ "limit": 10, "offset": 0,"requireData": {
-//           "authorDetails": true
-//         }}
-//     }else{
-//       setActiveIndex(cateId)
+  const apiserver =async()=>{
+    let variable_list
+    if(cateId==null){
+      setActiveIndex(cateId)
+        variable_list={ "limit": 10, "offset": 0,"requireData": {
+          "authorDetails": true
+        }}
+    }else{
+      setActiveIndex(cateId)
 
-//      variable_list={ "limit": 10, "offset": 0,categoryId:cateId,"requireData": {
-//       "authorDetails": true
-//     }}
+     variable_list={ "limit": 10, "offset": 0,categoryId:cateId,"requireData": {
+      "authorDetails": true
+    }}
 
-//     }
+    }
   
-//   //  let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
-//   //  setPostes(postdatas)
-//    setLoader(true)
-//   }
+  //  let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
+  //  setPostes(postdatas)
+   setLoader(true)
+  }
 
-//   useEffect(()=>{
-//     apiserver()
+  useEffect(()=>{
+    apiserver()
     
-//   },[cateId])
+  },[cateId])
 //   useEffect(()=>{
 //     handlePostesMore()
    
@@ -74,7 +74,7 @@ export default function HomePage({Listdata,postes}) {
 //   }
 
 //   }
-let activeIndex=0
+// let activeIndex=0
 let scrollX=0
 
   return (
