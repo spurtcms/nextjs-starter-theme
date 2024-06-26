@@ -16,9 +16,9 @@ const HomeServerAction =async () => {
 let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
   return (
     <div>
-        {/* <Suspense fallback={null}> */}
+        <Suspense fallback={null}>
       <HomePage Listdata={Listdata} postes={postdatas}/>
-      {/* </Suspense> */}
+      </Suspense>
     </div>
   )
 }
