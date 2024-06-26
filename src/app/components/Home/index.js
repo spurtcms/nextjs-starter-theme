@@ -17,7 +17,7 @@ let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
   return (
     <div>
         <Suspense fallback={null}>
-      <HomePage Listdata={Listdata} postdatas={postdatas}/>
+      <HomePage Listdata={Listdata} postes={postdatas}/>
       </Suspense>
     </div>
   )

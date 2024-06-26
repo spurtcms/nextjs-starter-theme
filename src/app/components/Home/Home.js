@@ -1,9 +1,9 @@
 'use client'
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
-import { GET_POSTS_LIST_QUERY } from "../../api/query";
-import { fetchGraphQl } from "../../api/graphicql";
+import { useRouter } from "next/navigation";
+// import { GET_POSTS_LIST_QUERY } from "../../api/query";
+// import { fetchGraphQl } from "../../api/graphicql";
 import Banner from "../Banner";
 import BannerSkeleton from "../../utilities/Skeleton/BannerSkeleton";
 import NavBar from "../NavBar";
@@ -11,10 +11,10 @@ import ViewAllSkeleton from "../../utilities/Skeleton/ViewAllSkeleton";
 import Post from "../Viewallposts/Post";
 
 
-export default function HomePage({Listdata,postdatas}) {
-  let postes=postdatas
+export default function HomePage({Listdata,postes}) {
+  // let postes=postdatas
 const router =useRouter()
-const searchParams = useSearchParams()
+// const searchParams = useSearchParams()
   // const [postes,setPostes]=useState([])
   const [postesCategory,setPostesCategory]=useState(Listdata)
   const [bannerShow,setBannerShow]=useState([])
@@ -22,7 +22,7 @@ const searchParams = useSearchParams()
   const [scrollX, setscrollX] = useState(0);
   const [loader,setLoader]=useState(false)
   const [triger,setTriger]=useState(0)
-  let cateId=searchParams.get("cateId")
+  let cateId=null
 
  
 
