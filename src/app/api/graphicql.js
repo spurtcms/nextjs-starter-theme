@@ -1,5 +1,4 @@
 
-"use server"
 import { apiinstance } from "./interceptor";
 
 
