@@ -40,7 +40,6 @@ const apiserver =async()=>{
     }
   return (
     <>
-<FacebookLogin />
     <div className="md:lg-0">  
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8  mb-10">
       {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
@@ -73,6 +72,8 @@ const apiserver =async()=>{
                 /></button></nav>
                 </div>
 }
+<FacebookLogin />
+
             </div>
            
             </>
