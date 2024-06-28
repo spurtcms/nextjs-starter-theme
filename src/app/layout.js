@@ -14,7 +14,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" >
-       
+       {/* <Head> */}
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+      {/* </Head> */}
       <body className={inter.className}>
       <DarkThemeProvider>
       <main className="container min-h-screen mx-auto max-w-screen-lg">
@@ -23,7 +25,8 @@ export default function RootLayout({ children }) {
       <Footer />
       </main>
       </DarkThemeProvider>
-      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+      
+      
 
       </body>
    

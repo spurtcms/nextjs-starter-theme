@@ -72,7 +72,8 @@ const apiserver =async()=>{
                 /></button></nav>
                 </div>
 }
-<FacebookLogin />
+{/* {console.log(FacebookLogin,'FacebookLogin')} */}
+{FacebookLogin&&<FacebookLogin />}
 
             </div>
            
