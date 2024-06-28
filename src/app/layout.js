@@ -2,8 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import { DarkThemeProvider } from "./utilities/Theme/DarkThemeProvider";
-import Footer from "./components/Footer";
-import Script from "next/script";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,16 +20,9 @@ export default function RootLayout({ children }) {
       <main className="container min-h-screen mx-auto max-w-screen-lg">
       <Header/>
       {children}
-      <Footer />
       </main>
       </DarkThemeProvider>
      
-      <script
-          src="https://connect.facebook.net/en_US/sdk.js"
-          async
-          defer
-          crossorigin="anonymous"
-        />
       </body>
    
     </html>

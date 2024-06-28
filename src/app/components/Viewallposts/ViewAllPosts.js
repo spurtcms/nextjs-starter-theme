@@ -6,7 +6,6 @@ import { GET_POSTS_LIST_QUERY } from '../../api/query';
 import Post from './Post';
 import ViewAllSkeleton from '../../utilities/Skeleton/ViewAllSkeleton';
 import { fetchGraphQl, fetchGraphQls } from '../../api/graphicql';
-import FacebookLogin from '../FacebookLogin/FacebookLogin';
 
 
 export default function ViewAllPostsComp() {
@@ -72,8 +71,7 @@ const apiserver =async()=>{
                 /></button></nav>
                 </div>
 }
-{/* {console.log(FacebookLogin,'FacebookLogin')} */}
-{FacebookLogin&&<FacebookLogin />}
+
 
             </div>
            
