@@ -5,17 +5,19 @@ import { initFacebookSdk, getFacebookLoginStatus, fbLogin } from "./FacebookSDK"
 function FacebookLogin() {
   
   useEffect(() => {
-
-    console.log(typeof window, "Started use effect");
-    initFacebookSdk().then(() => {
-      getFacebookLoginStatus().then((response) => {
-        if (response == null) {
-          console.log("No login status for the person");
-        } else {
-          console.log(response);
-        }
-      });
+setTimeout(()=>{
+  console.log(typeof window, "Started use effect");
+  initFacebookSdk().then(() => {
+    getFacebookLoginStatus().then((response) => {
+      if (response == null) {
+        console.log("No login status for the person");
+      } else {
+        console.log(response);
+      }
     });
+  });
+},3000)
+   
   }, []);
 
   const login = () => {
