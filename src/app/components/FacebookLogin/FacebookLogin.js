@@ -1,10 +1,12 @@
-'use client'
+// 'use client'
 import React, { useEffect } from 'react'
 import { initFacebookSdk, getFacebookLoginStatus, fbLogin } from "./FacebookSDK";
 
 function FacebookLogin() {
+  
   useEffect(() => {
-    console.log("Started use effect");
+
+    console.log(typeof window, "Started use effect");
     initFacebookSdk().then(() => {
       getFacebookLoginStatus().then((response) => {
         if (response == null) {
