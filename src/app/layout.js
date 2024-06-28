@@ -16,6 +16,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" >
       <body className={inter.className}>
+      <script
+          src="https://connect.facebook.net/en_US/sdk.js"
+          async
+          defer
+          crossorigin="anonymous"
+        />
         <DarkThemeProvider>
       <main className="container min-h-screen mx-auto max-w-screen-lg">
       <Header/>
@@ -23,12 +29,7 @@ export default function RootLayout({ children }) {
       <Footer />
       </main>
       </DarkThemeProvider>
-      <Script
-          src="https://connect.facebook.net/en_US/sdk.js"
-          async
-          defer
-          crossorigin="anonymous"
-        />
+     
       
       </body>
    

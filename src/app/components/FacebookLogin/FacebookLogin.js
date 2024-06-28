@@ -31,7 +31,7 @@ function FacebookLogin() {
   return (
     <div className="mt-8 flex justify-center items-center">
         
-        <button onClick={login} className="flex gap-4 text-center">Sign in with Facebook</button>
+        <button onClick={login} className="flex gap-4 text-center"><img src="/img/fb-hover.svg" />Sign in with Facebook</button>
      
     
        </div>
