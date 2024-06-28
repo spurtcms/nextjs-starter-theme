@@ -6,6 +6,7 @@ import { GET_POSTS_LIST_QUERY } from '../../api/query';
 import Post from './Post';
 import ViewAllSkeleton from '../../utilities/Skeleton/ViewAllSkeleton';
 import { fetchGraphQl, fetchGraphQls } from '../../api/graphicql';
+import FacebookLogin from '../FacebookLogin/FacebookLogin';
 
 
 export default function ViewAllPostsComp() {
@@ -39,7 +40,7 @@ const apiserver =async()=>{
     }
   return (
     <>
-
+<FacebookLogin />
     <div className="md:lg-0">  
     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8  mb-10">
       {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(

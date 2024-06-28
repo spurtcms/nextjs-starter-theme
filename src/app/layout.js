@@ -15,6 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en" >
        
       <body className={inter.className}>
+      <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
       <DarkThemeProvider>
       <main className="container min-h-screen mx-auto max-w-screen-lg">
       <Header/>
