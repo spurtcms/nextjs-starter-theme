@@ -15,7 +15,7 @@ export default function Post({data,activeIndex,scrollX}) {
             <div  className="mb-6 block">
             <Image
                 loader={imageLoader}
-                src={data.coverImage}
+                src={`https://demo.spurtcms.com/${data.coverImage}`}
                 alt="spurtCMS card image"
                 width={1000}
                 height={1000}
