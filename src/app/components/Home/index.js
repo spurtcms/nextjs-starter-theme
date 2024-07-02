@@ -1,7 +1,8 @@
 // import React, { Suspense } from 'react'
-import HomePage from './Home'
+// import HomePage from '../../addOns/Home'
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from '@/app/api/query'
 import { fetchGraphQl } from '@/app/api/graphicql'
+import {AddonsComponent} from '../../addOns/addonsconfig'
 
 const HomeServerAction =async () => {
     let variable_category={
@@ -17,7 +18,9 @@ const HomeServerAction =async () => {
   return (
     <div>
         {/* <Suspense fallback={null}> */}
-      <HomePage Listdata={Listdata} postdatas={postdatas}/>
+        {AddonsComponent.HomePage&& <AddonsComponent.HomePage Listdata={Listdata} postdatas={postdatas}
+        />}
+      {/* <HomePage Listdata={Listdata} postdatas={postdatas}/> */}
       {/* </Suspense> */}
     </div>
   )
