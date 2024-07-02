@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-// import Header from "./components/header";
-// import { DarkThemeProvider } from "./utilities/Theme/DarkThemeProvider";
+import Header from "./components/header";
+import { DarkThemeProvider } from "./utilities/Theme/DarkThemeProvider";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,12 +16,12 @@ export default function RootLayout({ children }) {
     <html lang="en" >
       <body className={inter.className}>
      
-        {/* <DarkThemeProvider> */}
+        <DarkThemeProvider>
       <main className="container min-h-screen mx-auto max-w-screen-lg">
-      {/* <Header/> */}
+      <Header/>
       {children}
       </main>
-      {/* </DarkThemeProvider> */}
+      </DarkThemeProvider>
      
       </body>
    
