@@ -2,7 +2,7 @@
 // import HomePage from '../../addOns/Home'
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from '@/app/api/query'
 import { fetchGraphQl } from '@/app/api/graphicql'
-import {AddonsComponent} from '../../addOns/addonsconfig'
+import {AddonsComponent} from '../../../../addOns/addonsconfig'
 
 const HomeServerAction =async () => {
     let variable_category={
