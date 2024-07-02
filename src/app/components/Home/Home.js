@@ -78,8 +78,9 @@ const handlePostesMore=()=>{
 
   return (
     <>
-    {/* {loader==true?
-      <Banner bannerShow={bannerShow}router={router} />:<BannerSkeleton />} */}
+    {/* {loader==true? */}
+      <Banner bannerShow={bannerShow} router={router} />
+      {/* :<BannerSkeleton />} */}
     
    
         
