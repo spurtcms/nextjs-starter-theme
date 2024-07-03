@@ -13,8 +13,9 @@ const HomeServerAction =async () => {
    let  variable_list={ "limit": 10, "offset": 0,"requireData": {
       "authorDetails": true
     }}
-  const Listdata=await fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category)
-  let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
+    const [Listdata,postdatas]=await Promise.all([fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category),fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)])
+  // const Listdata=await fetchGraphQl(GET_POSTS_CATEGORYLIST_QUERY,variable_category)
+  // let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
   return (
     <div>
         {/* <Suspense fallback={null}> */}
