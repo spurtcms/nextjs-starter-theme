@@ -1,8 +1,13 @@
+
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "../../public/app.css"
 import Header from "./components/header";
 import { DarkThemeProvider } from "./utilities/Theme/DarkThemeProvider";
 import NextTopLoader from "nextjs-toploader";
+import Head from "next/head";
+import Script from "next/script";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,9 +17,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en" >
-      <body className={inter.className}>
+   
+      {/* <Head>
+     
+      </Head> */}
+      <body className="bg-transparent">
       <NextTopLoader
             color="#00AEEF"
             initialPosition={0.08}
@@ -33,10 +43,12 @@ export default function RootLayout({ children }) {
         <DarkThemeProvider>
       <main className="container min-h-screen mx-auto max-w-screen-lg">
       <Header/>
+      {/* <Script src="/app.js" strategy="afterInteractive"/> */}
       {children}
+     
       </main>
       </DarkThemeProvider>
-     
+      
       </body>
    
     </html>

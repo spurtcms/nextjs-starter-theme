@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_2102" data-name="Rectangle 2102" width="32" height="32" transform="translate(1360 24)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_17" data-name="Mask Group 17" transform="translate(-1360 -24)" clip-path="url(#clip-path)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(1360 24)">
+      <g id="Social_Icon" data-name="Social Icon">
+        <g id="User">
+          <circle id="Ellipse_24" data-name="Ellipse 24" cx="16" cy="16" r="16" fill="#717171"/>
+          <g id="Group_113" data-name="Group 113">
+            <path id="Path_5416" data-name="Path 5416" d="M25.922,22.616A1.578,1.578,0,0,1,25.6,24,12.5,12.5,0,0,1,6.4,24a1.578,1.578,0,0,1-.321-1.389,10.223,10.223,0,0,1,3.6-5.583,1.548,1.548,0,0,1,1.875-.027,7.681,7.681,0,0,0,8.894,0,1.548,1.548,0,0,1,1.875.027A10.223,10.223,0,0,1,25.922,22.616Z" fill="#fff"/>
+            <circle id="Ellipse_25" data-name="Ellipse 25" cx="5.743" cy="5.743" r="5.743" transform="translate(10.257 4.875)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

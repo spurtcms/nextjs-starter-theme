@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-export default function NavBar({postes,setBannerShow,activeIndex,setActiveIndex,setscrollX,scrollX}) {
+export default function NavBar({postes,setBannerShow,bannerShow,activeIndex,setActiveIndex,setscrollX,scrollX}) {
   // const searchParams = useSearchParams()
   const router =useRouter()
     let scrl = useRef(null);
@@ -67,6 +67,7 @@ const handleActive=(id)=>{
     router.push(`/`)
   }else{
     router.push(`/?cateId=${id}&scroll=${scrollX}`)
+    
   }
   
 }
@@ -81,7 +82,8 @@ const handleActive=(id)=>{
         >
           <Image src="/img/arrow-left-colour.svg" alt="arrow-left" width={15}
                   height={15}
-                  priority />
+                  priority 
+                  />
         </button>
      )} 
 
@@ -106,7 +108,8 @@ const handleActive=(id)=>{
         >
          <Image src="/img/arrow-right-colour.svg" alt="arrow-right" width={15}
                   height={15}
-                  priority />
+                  priority 
+                  />
         </button>
       )}
  </div>

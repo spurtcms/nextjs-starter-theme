@@ -1,22 +1,56 @@
 
-export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$limit: Int!,$offset: Int!,$requireData:RequireData){
-    channelEntriesList(channelId:$channelId,categoryId:$categoryId,limit:$limit,offset:$offset,requireData:$requireData){
+export const GET_POSTS_LIST_QUERY = `query channelEntryList($limit: Int!
+  $offset: Int!,$req:RequireData,$tit:String,$categoryId: Int){
+    channelEntriesList(limit:$limit,offset:$offset,
+      requireData:$req,title:$tit,categoryId:$categoryId){
       channelEntriesList{
         id
         title
-        metaTitle
-        metaDescription
         slug
         description
-        createdOn
         userId
         channelId
         status
         isActive
+        createdOn
+        createdBy
+        modifiedBy
+        modifiedOn
         coverImage
+        thumbnailImage
+        metaTitle
+        metaDescription
+        keyword
         categoriesId
+        relatedArticles
         featuredEntry
+        viewCount
+        categories{
+          id
+          categoryName
+          categorySlug
+          description
+          imagePath
+          createdOn
+          createdBy
+          modifiedOn
+          modifiedBy
+          parentId
+        }
+        additionalFields{
+          sections{
+            sectionId
+            sectionName
+            sectionTypeId
+            createdOn
+            createdBy
+            modifiedOn
+            modifiedBY
+            orderIndex
+          }
+        }
         authorDetails{
+          AuthorId
           FirstName
           LastName
           Email
@@ -27,8 +61,7 @@ export const GET_POSTS_LIST_QUERY = `query($channelId: Int,$categoryId: Int,$lim
       count
     }
   }
-
-  `;
+`;
 
   export const GET_POSTS_CATEGORYLIST_QUERY = `query($hierarchylevel: Int!){
     categoriesList(hierarchyLevel: $hierarchylevel){

@@ -15,6 +15,7 @@ export default function Header() {
               width={32}
               height={32}
               priority
+              
             /></Link>
              <ThemeSwitch />
           

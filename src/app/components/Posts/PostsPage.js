@@ -7,8 +7,11 @@ import { useSearchParams } from "next/navigation";
 import PostSkeleton from "@/app/utilities/Skeleton/PostSkeleton";
 import ViewAllSkeleton from "@/app/utilities/Skeleton/ViewAllSkeleton";
 import Post from "../Viewallposts/Post";
+import { imageUrl } from "@/app/utilities/ImagePath";
 
 export default function PostsPage({params,Listdata,slugdata}) {
+
+
 
   const searchParams = useSearchParams()
   const [postes,setPostes]=useState([])
@@ -17,17 +20,17 @@ export default function PostsPage({params,Listdata,slugdata}) {
   let cateId=searchParams.get("cateId")
   let scrollX=searchParams.get("scroll")
   let {slug}=params
-  useEffect(()=>{
+  // useEffect(()=>{
     // let variable_list={ "limit": 10, "offset": 0,channelId:72}
     // let variable_slug={ "limit": 10, "offset": 0,"slug": slug}
 
     // fetchGraphQl(GET_POSTS_SLUG_QUERY,variable_slug,setPostes,setLoader)
     // fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list,handlePostesMore,setLoader)
-  },[slug])
+  // },[slug])
+
 
 const handlePostesMore=()=>{
-
-  let sdata=Listdata?.channelEntriesList?.channelEntriesList?.filter((s,i)=>s.id !=slug)
+  let sdata=Listdata?.channelEntriesList?.channelEntriesList?.filter((s,i)=>s.slug != slug)
   if(sdata?.length){
     Listdata.channelEntriesList.channelEntriesList=sdata
 
@@ -63,11 +66,12 @@ const handlePostesMore=()=>{
                 :
                  <Image
                 loader={imageLoader}
-                src={postes?.channelEntryDetail?.authorDetails?.ProfileImagePath}
+                src={`${imageUrl}${postes?.channelEntryDetail?.authorDetails?.ProfileImagePath}`}
                   alt="spurtCMS Profile Image"
                   width={32}
                   height={32}
                   priority
+                  
                 />
                 } 
                 </div>
@@ -75,24 +79,24 @@ const handlePostesMore=()=>{
               <a  className="text-primary text-base"> {postes?.channelEntryDetail?.authorDetails?.FirstName} {postes?.channelEntryDetail?.authorDetails?.LastName}  </a>
             </div>
           </div>
-          <div className="block mb-8">
+          <div className="block mb-8 h-[496px]">
             <Image
              loader={imageLoader}
-              src={postes?.channelEntryDetail?.coverImage}
+              src={`${imageUrl}${postes?.channelEntryDetail?.coverImage}`}
               alt="spurtCMS Banner"
               width={12000}
               height={1000}
               priority
               layout="responsive"
-              placeholder="blur"
               blurDataURL={"/img/no-image.png"}
+              className='h-full-imp'
             />
           </div></>:<> <PostSkeleton /></>}
          
          
           <p className="text-base text-black mb-1">{moment(postes?.channelEntryDetail?.createdOn).format("MMM DD, YYYY")} </p>
-          <div className="text-lg text-current font-light leading-normal mb-6" dangerouslySetInnerHTML={{
-            __html: postes?.channelEntryDetail?.description,
+          <div className="text-lg text-current font-light leading-normal mb-6 desc" dangerouslySetInnerHTML={{
+            __html: postes?.channelEntryDetail?.description.replaceAll("<br>"," "),
           }}/>
           {postesMore?.channelEntriesList?.channelEntriesList?.length !=0&&<><div className="border-b border-gray-200 block mb-8 mt-10"></div>
           <h1 className="text-3xxl font-bold text-black mb-10"> More Stories </h1>

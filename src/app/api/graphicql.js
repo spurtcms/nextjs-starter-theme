@@ -10,7 +10,8 @@ export const fetchGraphQl = async (GET_POSTS_QUERY,varia) => {
       body: JSON.stringify({
         query: GET_POSTS_QUERY,
         variables: varia
-      })
+      }),
+      cache: 'no-cache'
     });
      return entries?.data
   } catch (error) {
