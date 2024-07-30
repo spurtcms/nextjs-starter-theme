@@ -36,7 +36,7 @@ const searchParams = useSearchParams()
       setActiveIndex(cateId)
         variable_list={ "limit": 10, "offset": 0,"requireData": {
           "authorDetails": true
-        }}
+        },"categoryId":1}
     }else{
       setActiveIndex(cateId)
 

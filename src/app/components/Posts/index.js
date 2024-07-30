@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation'
 
 export async function generateMetadata({params}) {
 
-    let variable_lista={ "limit": 10, "offset": 0,channelId:72}
+    let variable_lista={ "limit": 10, "offset": 0,channelId:72,"categoryId":1}
     const dtas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_lista)
    let title=''
    let description=''

@@ -18,7 +18,7 @@ export default function ViewAllPostsComp() {
 const apiserver =async()=>{
   let varia={ "limit": 6, "offset": page,"requireData": {
     "authorDetails": true
-  }}
+  },"categoryId":1}
 
  let postdatas=await fetchGraphQl(GET_POSTS_LIST_QUERY,varia)
  setPostes(postdatas)
