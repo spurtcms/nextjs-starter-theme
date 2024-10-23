@@ -71,7 +71,7 @@ const handleActive=(id)=>{
   }
   
 }
-
+console.log(postes,'postes2312312');
   return (
    <>
    <div className="flex flex-nowrap flex-row gap-x-2 pb-4 mb-4 justify-start items-center relative">
@@ -89,11 +89,11 @@ const handleActive=(id)=>{
 
    
   
-        {postes?.categoriesList?.categories&&<>
+        {postes?.CategoryList?.categorylist&&<>
         <ul ref={scrl} onScroll={scrollCheck} className='flex flex-nowrap flex-row gap-x-2 justify-start items-center overflow-scroll scrollbar-style'>
             <li onClick={()=>handleActive(null)} className={`whitespace-nowrap px-6 py-2 rounded-3xl border font-base  leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500 cursor-pointer ${activeIndex==null?'border-cyan-500 text-primary':'border-gray-200 text-gray-600'}`}> All</li>
-          {postes?.categoriesList?.categories?.map((data,index)=>(
-                <li key={index} onClick={()=>handleActive(data.id)} className={`whitespace-nowrap px-6 py-2 rounded-3xl border font-base  leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500 cursor-pointer ${activeIndex==data.id?'border-cyan-500 text-primary':'border-gray-200 text-gray-600'}`}> {data.categoryName} </li>
+          {postes?.CategoryList?.categorylist?.map((data,index)=>(
+                <li key={index} onClick={()=>handleActive(data.categorySlug)} className={`whitespace-nowrap px-6 py-2 rounded-3xl border font-base  leading-4 hover:text-white hover:bg-gray-500 hover:border-gray-500 cursor-pointer ${activeIndex==data.categorySlug?'border-cyan-500 text-primary':'border-gray-200 text-gray-600'}`}> {data.categoryName} </li>
           
    ))}
   </ul>

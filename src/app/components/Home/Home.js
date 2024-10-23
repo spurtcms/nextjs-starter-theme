@@ -14,6 +14,7 @@ import NodataImg from "../NodataImg";
 
 
 export default function HomePage({Listdata,postdatas}) {
+  console.log(Listdata,postdatas,'Listdata');
   // let cateId=0
 const router =useRouter()
 const searchParams = useSearchParams()
@@ -28,21 +29,26 @@ const searchParams = useSearchParams()
  
   cateId = searchParams.get('cateId')
 
-
+console.log(postes,"8je3postes")
 
   const apiserver =async()=>{
     let variable_list
     if(cateId==null){
       setActiveIndex(cateId)
-        variable_list={ "limit": 10, "offset": 0,"requireData": {
-          "authorDetails": true
-        },"categoryId":1}
+        variable_list={ "commonFilter": {"limit": 10,"offset": 0}, "entryFilter": { "categorySlug": "blog",}, "AdditionalData": { "authorDetails": true, "categories": true }}
+        // { "limit": 10, "offset": 0,"requireData": {
+        //   "authorDetails": true
+        // },"categoryId":1}
     }else{
       setActiveIndex(cateId)
 
-     variable_list={ "limit": 10, "offset": 0,categoryId:parseInt(cateId),"requireData": {
-      "authorDetails": true
-    }}
+    //  variable_list={ "limit": 10, "offset": 0,categoryId:parseInt(cateId),"requireData": {
+    //   "authorDetails": true
+    // }}
+
+    variable_list={ "commonFilter": {"limit": 10,"offset": 0}, "entryFilter": { "categorySlug": cateId,}, "AdditionalData": { "authorDetails": true, "categories": true }}
+    // { "commonFilter":{"limit": 10, "offset": 0},"additionalData": {
+    //   "authorDetails": true}, "entryFilter": {"categoryId":parseInt(cateId)}}
     }
    let postdat=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_list)
    setPostes(postdat)
@@ -62,7 +68,7 @@ const searchParams = useSearchParams()
 const handlePostesMore=()=>{
       let listEntry=[]
       let banner=[]
-      postes?.channelEntriesList?.channelEntriesList?.map((data,i)=>{
+      postes?.ChannelEntriesList?.channelEntriesList?.map((data,i)=>{
     if(data.featuredEntry==1&&cateId==null){ 
     banner.push(data)
     setBannerShow(banner)
@@ -72,11 +78,12 @@ const handlePostesMore=()=>{
    }
   })
   if(listEntry.length){
-    postes.channelEntriesList.channelEntriesList=listEntry
+    postes.ChannelEntriesList.channelEntriesList=listEntry
   }
 
   }
 
+  console.log(bannerShow,'postes');
   return (
     <>
        {loader==true?
@@ -91,15 +98,16 @@ const handlePostesMore=()=>{
         
         <div className="md:lg-0">         
           
-          {postesCategory?.categoriesList?.categories&&
+          {postesCategory?.CategoryList?.categorylist&&
           <NavBar postes={postesCategory} setBannerShow={setBannerShow} bannerShow={bannerShow} activeIndex={activeIndex} setActiveIndex={setActiveIndex} scrollX={scrollX} setscrollX={setscrollX}/>}
-          {postes?.channelEntriesList?.channelEntriesList?.length!=0 ?
+          {postes?.ChannelEntriesList?.channelEntriesList?.length!=0 ?
            <>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
               
               {loader==true?<> 
-              {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+              {postes?.ChannelEntriesList?.channelEntriesList?.map((data,index)=>(
             index<4&&
+            
             <Post data={data} activeIndex={activeIndex} scrollX={scrollX} />
 
             ))}
@@ -107,18 +115,18 @@ const handlePostesMore=()=>{
           
             </div>
              <>
-          {postes?.channelEntriesList?.channelEntriesList?.length>4&&<>
+          {postes?.ChannelEntriesList?.channelEntriesList?.length>4&&<>
           <div className="border-b border-gray-200 block mb-8 "></div>
           <h1 className="text-3xxl font-bold text-black mb-10"> More Stories </h1>
         
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-8 mb-10">
-          {loader==true?<> {postes?.channelEntriesList?.channelEntriesList?.map((data,index)=>(
+          {loader==true?<> {postes?.ChannelEntriesList?.channelEntriesList?.map((data,index)=>(
           index>=4&&index<6&&
           <Post data={data} activeIndex={0} />
               ))}</>:<ViewAllSkeleton />}
          
           </div>
-          {postes?.channelEntriesList?.channelEntriesList?.length>6&& 
+          {postes?.ChannelEntriesList?.channelEntriesList?.length>6&& 
           <div class="mt-10 mb-10 flex justify-center">
            
            <Link href={"/view-all-posts?page=0"} className="relative inline-flex items-center gap-1 rounded-md border border-gray-300 bg-white px-3 py-2 pl-4 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20 disabled:pointer-events-none disabled:opacity-40 dark:border-gray-500 dark:bg-gray-800 dark:text-gray-300 cursor-pointer"><span>View all Posts</span></Link>

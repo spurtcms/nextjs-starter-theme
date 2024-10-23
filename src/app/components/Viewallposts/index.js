@@ -5,7 +5,8 @@ import { GET_POSTS_LIST_QUERY } from '@/app/api/query'
 
 export async function generateMetadata({params}) {
 
-    let variable_lista={ "limit": 10, "offset": 0,channelId:72,"categoryId":1}
+    // let variable_lista={ "limit": 10, "offset": 0,channelId:72,"categoryId":1}
+    let variable_lista={ "commonFilter": {"limit": 10,"offset": 0}, "entryFilter": { "categorySlug": params.slug,}, "AdditionalData": { "authorDetails": true, "categories": true }}
     const dtas=await fetchGraphQl(GET_POSTS_LIST_QUERY,variable_lista)
    let title=''
    let description=''
