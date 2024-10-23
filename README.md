@@ -8,16 +8,16 @@ The Studio connects to spurtcms, which gives you hosted content APIs with a flex
 
 ## Features
 
-- Smooth admin login and intuitive dashboard.
-- Quick navigatgion to channels, members, spaces from dashboard.
-- Easy Admin Profile Update.
-- Manage roles and assigning of permisions.
-- Effortless team creation.
-- Multilingual support.
-- Customization of email templates
-- Create and manage content
-- Member management and member access
-- Simple space creation
+- Next.js v14
+- Next.js App Router
+- Styling with Tailwind CSS
+- Dark & Light Mode
+- Mobile Responsive
+- skeleton loader 
+- Optimized for SEO using Next.js's Metadata
+- infinite scroll pagination
+- New fetching and caching paradigms
+- Server Actions for mutations
 
 
 
@@ -44,7 +44,24 @@ Setup SpurtCMS Admin Console for Manage or Populate content
 spurtCMS prioritizes user-friendly administration, offering powerful tools for content creation, management, and defining CMS workspaces. Administrators have precise control over member access, ensuring streamlined member management. Dynamic channel management allows effective content structuring, enhancing the overall user experience. Administrators effortlessly create and manage channels and spaces, providing a comprehensive, user-centric content management solution for personalized and organized web
 environments.
 
-![Screenshot of spurtCMS]()
+## Screenshots of spurtCMSAdmin
+Dashboard
+
+![Dashboard](https://dev.spurtcms.com/public/img/dashboardpage.png)
+
+
+Channels
+
+![Screenshot of spurtCMS channels](	https://dev.spurtcms.com/public/img/channellistpage.png)
+
+Entries
+
+![Screenshot of spurtCMS entries](	https://dev.spurtcms.com/public/img/entrieslistpage.png)
+
+
+Category Group
+![Screenshot of spurtCMS categories group](	https://dev.spurtcms.com/public/img/categorygrouppage.png)
+
 
 
 First,you need to set up spurtCMS Admin Application.There are many solutions for insallation.
@@ -67,27 +84,27 @@ sudo systemctl start spurtcms-admin.service
 ```bash
 sudo systemctl stop spurtcms-admin.service
 ```
-## Step 2. GraphqlAPI Setup
-To initiate the set up process please refer
-[(https://www.spurtcms.com/documentation/grapql-api-setup)]
+## Steps to get API Key
+ 
+ Before starting our Next JS starter theme blog template we need to go inside our spurtCMS Admin and get the default token that we will be using for displaying our content.
 
-or using CLI
-```bash
-spurtcms -i graphql
-```
+1.Inside your spurtCMS Admin Panel navigate to API Keys.
 
-```bash
-sudo ./spurtcms-api.sh
-```
+![API Key 1 (1)](https://github.com/user-attachments/assets/b3806e8f-1dcd-4f75-88fe-8366b3036d47)
 
-```bash
-sudo systemctl start spurtcms-api.service
-```
 
-```bash
-sudo systemctl stop spurtcms-api.service
-```
-## Step 3. Set up environment variables
+
+2.click on the Action key
+
+![API Key 2 (1)](https://github.com/user-attachments/assets/7976ebe4-40f9-4c65-b99b-195e73ca2f9a)
+
+3.Copy the api key
+
+![API Key 3](https://github.com/user-attachments/assets/a3d34ac1-7243-4931-8a09-6c40c2d005b4)
+
+Once you have your token add it to your env.
+
+## Step 2. Set up environment variables
 Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
 
 Your env should look like this:
@@ -96,9 +113,9 @@ Your env should look like this:
 NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL=""
 ```
 ```bash
-NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_TOKEN=""
+NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_TOKEN="your-api-token"
 ```
-## Step 4. Run Next.js in development mode
+## Step 3. Run Next.js in development mode
 ```bash
 npm install 
 ```
@@ -108,7 +125,7 @@ npm run dev
 Your blog should be up and running on [http://localhost:3000!](http://localhost:3000!)
 
 
-## Step 5. Run Next.js in production mode
+## Step 4. Run Next.js in production mode
 ```bash
 npm run prod
 ```
