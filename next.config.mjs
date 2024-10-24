@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false,
-    trailingSlash:true,
+    reactStrictMode:false,
+    trailingSlash: true,
     //   basename:false
-//   distDir: "build",
-//   output: "export",
+    //   distDir: "build",
+    //   output: "export",
 };
 
 export default nextConfig;
