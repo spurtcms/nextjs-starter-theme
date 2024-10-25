@@ -19,7 +19,6 @@ export default function Banner({ bannerShow, router }) {
         <div className="block">
           <div className='h-[512px]'>
             <Image
-              loader={imageLoader}
               src={`${bannerShow?.[0]?.coverImage}`}
               alt="spurtCMS Banner"
               className="cursor-pointer h-full w-image"
