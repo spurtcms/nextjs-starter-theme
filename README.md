@@ -60,6 +60,7 @@ Entries
 
 
 Category Group
+
 ![Screenshot of spurtCMS categories group](	https://dev.spurtcms.com/public/img/categorygrouppage.png)
 
 
