@@ -54,13 +54,27 @@ export default function HomePage({ Listdata, postdatas }) {
   //   setLoader(true)
   // }
   useEffect(() => {
+
+    const fetchData = async (limit, offset, category) => {
+      setLoader(false);
+      const posts = await PostFilterApi(limit, offset, category)
+      console.log(posts,"posts")
+      handlePostSplit(posts)
+    };
+
     if (cateId) {
-      const posts = PostFilterApi(10, 0, cateId)
-      handlePostSplit(posts)
+      fetchData(10, 0, cateId)
     } else {
-      const posts = PostFilterApi(10, 0, "blog")
-      handlePostSplit(posts)
+      fetchData(10, 0, "blog")
     }
+
+    // if (cateId) {
+    //   const posts = PostFilterApi(10, 0, cateId)
+    //   handlePostSplit(posts)
+    // } else {
+    //   const posts = PostFilterApi(10, 0, "blog")
+    //   handlePostSplit(posts)
+    // }
   }, [cateId])
   useEffect(() => {
     if (postdatas) {

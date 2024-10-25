@@ -5,6 +5,7 @@ import { GET_POSTS_LIST_QUERY } from "../query"
 
 
 export const PostFilterApi = async (limit, offset, cateId) => {
+    console.log(cateId,"sccsdcsddcdsd")
     let variables = { "commonFilter": { "limit": limit, "offset": offset }, "entryFilter": { "categorySlug": cateId, }, "AdditionalData": { "authorDetails": true, "categories": true } }
     let posts = await fetchGraphQl(GET_POSTS_LIST_QUERY, variables)
     return posts
