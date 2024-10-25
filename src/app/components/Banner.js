@@ -1,7 +1,7 @@
 import moment from 'moment'
 import Image from 'next/image'
 import React from 'react'
-import { imageUrl } from '../utilities/ImagePath'
+import { imageUrl, imageUrlAlt } from '../utilities/ImagePath'
 
 export default function Banner({ bannerShow, router }) {
 
@@ -57,7 +57,7 @@ export default function Banner({ bannerShow, router }) {
                     </>
                     : <Image
                       loader={imageLoader}
-                      src={`${imageUrl}${bannerShow?.[0]?.authorDetails?.profileImagePath}`}
+                      src={`${imageUrlAlt}${bannerShow?.[0]?.authorDetails?.profileImagePath}`}
                       alt="spurtCMS Profile Image"
                       width={32}
                       height={32}

@@ -7,7 +7,7 @@ import { useSearchParams } from "next/navigation";
 import PostSkeleton from "@/app/utilities/Skeleton/PostSkeleton";
 import ViewAllSkeleton from "@/app/utilities/Skeleton/ViewAllSkeleton";
 import Post from "../Viewallposts/Post";
-import { imageUrl } from "@/app/utilities/ImagePath";
+import { imageUrl, imageUrlAlt } from "@/app/utilities/ImagePath";
 
 export default function PostsPage({ params, Listdata, slugdata }) {
 
@@ -67,7 +67,7 @@ export default function PostsPage({ params, Listdata, slugdata }) {
                 :
                 <Image
                   loader={imageLoader}
-                  src={`${imageUrl}${postes?.ChannelEntryDetail?.authorDetails?.profileImagePath}`}
+                  src={`${imageUrlAlt}${postes?.ChannelEntryDetail?.authorDetails?.profileImagePath}`}
                   alt="spurtCMS Profile Image"
                   width={32}
                   height={32}

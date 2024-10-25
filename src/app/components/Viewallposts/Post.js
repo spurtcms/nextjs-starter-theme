@@ -3,7 +3,7 @@ import React from 'react'
 import Link from 'next/link'
 import moment from "moment";
 import Image from 'next/image';
-import { imageUrl } from '@/app/utilities/ImagePath';
+import { imageUrl, imageUrlAlt } from '@/app/utilities/ImagePath';
 export default function Post({ data, activeIndex, scrollX }) {
 
   const imageLoader = ({ src }) => {
@@ -67,7 +67,7 @@ export default function Post({ data, activeIndex, scrollX }) {
                   />}</>
               : <Image
                 loader={imageLoader}
-                src={`${imageUrl}${data?.authorDetails?.profileImagePath}`}
+                src={`${imageUrlAlt}${data?.authorDetails?.profileImagePath}`}
                 alt="spurtCMS Profile Image"
                 width={32}
                 height={32}
