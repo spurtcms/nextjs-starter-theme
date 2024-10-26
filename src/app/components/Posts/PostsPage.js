@@ -65,7 +65,7 @@ export default function PostsPage({ params, Listdata, slugdata }) {
               {((postes?.ChannelEntryDetail?.authorDetails?.profileImagePath == "")) ?
                 <span className="text-3xxl text-white">{((postes?.ChannelEntryDetail?.authorDetails?.firstName == "")) ? "" : postes?.ChannelEntryDetail?.authorDetails?.firstName?.[0]}</span>
                 :
-                <Image
+                <img
                   loader={imageLoader}
                   src={`${imageUrlAlt}${postes?.ChannelEntryDetail?.authorDetails?.profileImagePath}`}
                   alt="spurtCMS Profile Image"

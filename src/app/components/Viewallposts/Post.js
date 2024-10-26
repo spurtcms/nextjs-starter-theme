@@ -16,7 +16,7 @@ export default function Post({ data, activeIndex, scrollX }) {
         <Link href={`/posts/${data.slug}`}>
           <div className="mb-6 block h-[236px]">
             {data.coverImage ?
-              <Image
+              <img
                 loader={imageLoader}
                 src={`${data.coverImage}`}
                 alt="spurtCMS card image"
@@ -65,7 +65,7 @@ export default function Post({ data, activeIndex, scrollX }) {
                     height={32}
                     priority
                   />}</>
-              : <Image
+              : <img
                 loader={imageLoader}
                 src={`${imageUrlAlt}${data?.authorDetails?.profileImagePath}`}
                 alt="spurtCMS Profile Image"

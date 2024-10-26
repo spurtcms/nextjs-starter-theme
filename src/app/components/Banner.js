@@ -18,7 +18,7 @@ export default function Banner({ bannerShow, router }) {
       {bannerShow?.length != 0 &&
         <div className="block">
           <div className='h-[512px]'>
-            <Image
+            <img
               src={`${bannerShow?.[0]?.coverImage}`}
               alt="spurtCMS Banner"
               className="cursor-pointer h-full w-image"
@@ -44,7 +44,7 @@ export default function Banner({ bannerShow, router }) {
                         <span className="text-3xxl text-white">{bannerShow?.[0]?.authorDetails?.firstName?.[0]}</span>
                         :
                         <>
-                          <Image
+                          <img
                             loader={imageLoader}
                             src={`/img/user1.jpg`}
                             alt="spurtCMS Profile Image"
@@ -54,7 +54,7 @@ export default function Banner({ bannerShow, router }) {
                           />
                         </>}
                     </>
-                    : <Image
+                    : <img
                       loader={imageLoader}
                       src={`${imageUrlAlt}${bannerShow?.[0]?.authorDetails?.profileImagePath}`}
                       alt="spurtCMS Profile Image"
