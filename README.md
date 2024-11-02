@@ -34,6 +34,9 @@ Use the Deploy Button below, you'll deploy the example using
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fspurtcms%2Fnextjs-starter-theme)
 
+## Set up environment variables
+
+Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
 
 ## Step 1. Steps to get API Key
  
@@ -55,9 +58,6 @@ Use the Deploy Button below, you'll deploy the example using
 
 Once you have your token add it to your env.
 
-## Step 2. Set up environment variables
-
-Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
 
 Your env should look like this:
 
@@ -67,7 +67,7 @@ NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL=""
 ```bash
 NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_TOKEN="your-api-token"
 ```
-## Step 3. Run Next.js in development mode
+## Step 2. Run Next.js in development mode
 
 ```bash
 npm install 
@@ -78,7 +78,7 @@ npm run dev
 Your blog should be up and running on [http://localhost:3000!](http://localhost:3000!)
 
 
-## Step 4. Run Next.js in production mode
+## Step 3. Run Next.js in production mode
 ```bash
 npm run prod
 ```
