@@ -34,62 +34,12 @@ Use the Deploy Button below, you'll deploy the example using
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fspurtcms%2Fnextjs-starter-theme)
 
-## Configuration
 
-
-## Step 1. spurtCMS Admin Setup
-
-Setup SpurtCMS Admin Console for Manage or Populate content
-
-spurtCMS prioritizes user-friendly administration, offering powerful tools for content creation, management, and defining CMS workspaces. Administrators have precise control over member access, ensuring streamlined member management. Dynamic channel management allows effective content structuring, enhancing the overall user experience. Administrators effortlessly create and manage channels and spaces, providing a comprehensive, user-centric content management solution for personalized and organized web
-environments.
-
-## Screenshots of spurtCMSAdmin
-Dashboard
-
-![Dashboard](https://dev.spurtcms.com/public/img/dashboard.jpg)
-
-
-Channels
-
-![Screenshot of spurtCMS channels](	https://dev.spurtcms.com/public/img/channellistpage.png)
-
-Entries
-
-![Screenshot of spurtCMS entries](	https://dev.spurtcms.com/public/img/entrieslistpage.png)
-
-
-Category Group
-
-![Screenshot of spurtCMS categories group](	https://dev.spurtcms.com/public/img/categorygrouppage.png)
-
-
-
-First,you need to set up spurtCMS Admin Application.There are many solutions for insallation.
-Please refer [(https://www.spurtcms.com/documentation/cms-admin)] 
-
-But,you can quick start with using CLI
-
-```bash
-sudo snap install spurtcms
-```
-```bash
-spurtcms -i admin
-```
-```bash
-sudo ./spurtcms-admin.sh
-```
-```bash
-sudo systemctl start spurtcms-admin.service
-```
-```bash
-sudo systemctl stop spurtcms-admin.service
-```
-## Steps to get API Key
+## Step 1. Steps to get API Key
  
  Before starting our Next JS starter theme blog template we need to go inside our spurtCMS Admin and get the default token that we will be using for displaying our content.
 
-1.Inside your spurtCMS Admin Panel navigate to API Keys.
+1.Inside your spurtCMS Admin Panel [spurtcms][https://dev.spurtcms.com/] navigate to API Keys.
 
 ![API Key 1 (1)](https://github.com/user-attachments/assets/b3806e8f-1dcd-4f75-88fe-8366b3036d47)
 
@@ -106,6 +56,7 @@ sudo systemctl stop spurtcms-admin.service
 Once you have your token add it to your env.
 
 ## Step 2. Set up environment variables
+
 Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
 
 Your env should look like this:
@@ -117,6 +68,7 @@ NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL=""
 NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_TOKEN="your-api-token"
 ```
 ## Step 3. Run Next.js in development mode
+
 ```bash
 npm install 
 ```
