@@ -148,7 +148,7 @@ export const GET_POSTS_LIST_QUERY = `query ChannelEntriesListNew($commonFilter:F
     }
 `;
 
-  export const GET_POSTS_CATEGORYLIST_QUERY = `query CategoryList($categoryFilter:CategoryFilter,
+export const GET_POSTS_CATEGORYLIST_QUERY = `query CategoryList($categoryFilter:CategoryFilter,
     $commonFilter: Filter) {
       CategoryList(categoryFilter:$categoryFilter,
         commonFilter:$commonFilter){
@@ -171,8 +171,8 @@ export const GET_POSTS_LIST_QUERY = `query ChannelEntriesListNew($commonFilter:F
   }
   `;
 
-  
-  export const GET_POSTS_SLUG_QUERY = `
+
+export const GET_POSTS_SLUG_QUERY = `
   query ChannelEntryDetail(
   $id: Int
   $slug: String

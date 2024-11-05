@@ -97,7 +97,7 @@ export default function PostsPage({ params, Listdata, slugdata }) {
 
 
         <p className="text-base text-black mb-1">{moment(postes?.ChannelEntryDetail?.createdOn).format("MMM DD, YYYY")} </p>
-        <div className="text-lg text-current font-light leading-normal mb-6 desc" dangerouslySetInnerHTML={{
+        <div className="text-lg text-current font-light leading-normal mb-6 desc [&_iframe]:aspect-video" dangerouslySetInnerHTML={{
           __html: postes?.ChannelEntryDetail?.description.replaceAll("<br>", " "),
         }} />
         {postesMore?.ChannelEntriesList?.channelEntriesList?.length != 0 && <><div className="border-b border-gray-200 block mb-8 mt-10"></div>
