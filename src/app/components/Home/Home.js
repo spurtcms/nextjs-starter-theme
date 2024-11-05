@@ -12,6 +12,7 @@ import Post from "../Viewallposts/Post";
 import BannerSkeleton from "@/app/utilities/Skeleton/BannerSkeleton";
 import NodataImg from "../NodataImg";
 import { PostFilterApi } from "@/app/api/ServerSide/Post";
+import { defaultCategorySlug } from "@/app/api/url";
 
 
 export default function HomePage({ Listdata, postdatas }) {
@@ -34,7 +35,7 @@ export default function HomePage({ Listdata, postdatas }) {
   //   let variable_list
   //   if (cateId == null) {
   //     setActiveIndex(cateId)
-  //     variable_list = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": "blog", }, "AdditionalData": { "authorDetails": true, "categories": true } }
+  //     variable_list = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": defaultCategorySlug, }, "AdditionalData": { "authorDetails": true, "categories": true } }
   //     // { "limit": 10, "offset": 0,"requireData": {
   //     //   "authorDetails": true
   //     // },"categoryId":1}
@@ -65,14 +66,14 @@ export default function HomePage({ Listdata, postdatas }) {
     if (cateId) {
       fetchData(10, 0, cateId)
     } else {
-      fetchData(10, 0, "blog")
+      fetchData(10, 0, defaultCategorySlug)
     }
 
     // if (cateId) {
     //   const posts = PostFilterApi(10, 0, cateId)
     //   handlePostSplit(posts)
     // } else {
-    //   const posts = PostFilterApi(10, 0, "blog")
+    //   const posts = PostFilterApi(10, 0, defaultCategorySlug)
     //   handlePostSplit(posts)
     // }
   }, [cateId])

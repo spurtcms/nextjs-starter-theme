@@ -7,6 +7,7 @@ import Post from './Post';
 import ViewAllSkeleton from '../../utilities/Skeleton/ViewAllSkeleton';
 import { fetchGraphQl, fetchGraphQls } from '../../api/graphicql';
 import { PostFilterApi } from '@/app/api/ServerSide/Post';
+import { defaultCategorySlug } from '@/app/api/url';
 
 
 export default function ViewAllPostsComp() {
@@ -20,7 +21,7 @@ export default function ViewAllPostsComp() {
     //   "authorDetails": true
     // },"categoryId":1}
 
-    let varia = { "commonFilter": { "limit": 6, "offset": page }, "entryFilter": { "categorySlug": "blog", }, "AdditionalData": { "authorDetails": true, "categories": true } }
+    let varia = { "commonFilter": { "limit": 6, "offset": page }, "entryFilter": { "categorySlug": defaultCategorySlug, }, "AdditionalData": { "authorDetails": true, "categories": true } }
 
     let postdatas = await fetchGraphQl(GET_POSTS_LIST_QUERY, varia)
     setPostes(postdatas)
@@ -29,7 +30,7 @@ export default function ViewAllPostsComp() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const posts = await PostFilterApi(6, page, "blog");
+      const posts = await PostFilterApi(6, page, defaultCategorySlug);
       setPostes(posts);
       setLoader(true);
     };

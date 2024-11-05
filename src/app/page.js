@@ -1,11 +1,12 @@
 
 import { fetchGraphQl } from "./api/graphicql";
 import { GET_POSTS_CATEGORYLIST_QUERY, GET_POSTS_LIST_QUERY } from "./api/query";
+import { defaultCategorySlug } from "./api/url";
 import HomeServerAction from "./components/Home";
 
 
 export default async function Home() {
-  let variable_category={"categoryFilter":{ "categoryGroupSlug": "blog","excludeParent": true},"commonFilter":{"limit":10,"offset":0}}
+  let variable_category={"categoryFilter":{ "categoryGroupSlug": defaultCategorySlug,"excludeParent": true},"commonFilter":{"limit":10,"offset":0}}
   
   // {
   //   "commonFilter": {
@@ -15,7 +16,7 @@ export default async function Home() {
   //     "categoryGroupId": 1,
   //   }
   // }
- let  variable_list={ "commonFilter": {"limit": 10,"offset": 0}, "entryFilter": { "categorySlug": "blog",}, "AdditionalData": { "authorDetails": false, "categories": true }
+ let  variable_list={ "commonFilter": {"limit": 10,"offset": 0}, "entryFilter": { "categorySlug": defaultCategorySlug,}, "AdditionalData": { "authorDetails": false, "categories": true }
 }
 //  { "commonFilter":{"limit": 10, "offset": 0},"additionalData": {
 //     "authorDetails": true}, "entryFilter": {"categoryId":1}}

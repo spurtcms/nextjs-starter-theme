@@ -3,6 +3,7 @@ import PostsPage from './PostsPage'
 import { fetchGraphQl } from '@/app/api/graphicql'
 import { GET_POSTS_LIST_QUERY, GET_POSTS_SLUG_QUERY } from '@/app/api/query'
 import { notFound } from 'next/navigation'
+import { defaultCategorySlug } from '@/app/api/url'
 
 export async function generateMetadata({ params }) {
 
@@ -34,7 +35,7 @@ export const PostServerAction = async ({ params }) => {
   // let variable_list={ "limit": 10, "offset": 0,"requireData": {
   //   "authorDetails": true
   // }}
-  let variable_list = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": "blog" }, "AdditionalData": { "authorDetails": true, "categories": true } }
+  let variable_list = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": defaultCategorySlug }, "AdditionalData": { "authorDetails": true, "categories": true } }
 
   const Listdata = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_list)
 

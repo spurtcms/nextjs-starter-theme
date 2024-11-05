@@ -1,0 +1,1 @@
+export const defaultCategorySlug = process.env.NEXT_PUBLIC_DEFAULT_CATEGORY_SLUG
