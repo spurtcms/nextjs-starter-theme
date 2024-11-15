@@ -9,6 +9,7 @@ export default function Post({ data, activeIndex, scrollX }) {
   const imageLoader = ({ src }) => {
     return src
   }
+  console.log(data.slug,'rdqweqweqweqwe')
   return (
     <>
 
@@ -67,7 +68,7 @@ export default function Post({ data, activeIndex, scrollX }) {
                   />}</>
               : <img
                 loader={imageLoader}
-                src={`${imageUrlAlt}${data?.authorDetails?.profileImagePath}`}
+                src={`${imageUrl}${data?.authorDetails?.profileImagePath}`}
                 alt="spurtCMS Profile Image"
                 width={32}
                 height={32}

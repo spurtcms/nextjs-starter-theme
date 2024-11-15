@@ -48,6 +48,33 @@ export default function PostsPage({ params, Listdata, slugdata }) {
     handlePostesMore()
     setLoader(true)
   }, [])
+
+  console.log(postes?.ChannelEntryDetail?.authorDetails?.profileImagePath,"posteslolol")
+
+  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+
+    useEffect(() => {
+      if (isScriptLoaded) return;
+      const script = document.createElement('script');
+      script.src = 'https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries';
+      script.defer = true;
+      script.async = true;
+  
+      script.onload = () => setIsScriptLoaded(true); 
+      document.body.appendChild(script);
+  
+      return () => {
+        document.body.removeChild(script);
+      };
+    }, [isScriptLoaded]);
+
+
+
+
+
+
+
+
   return (
     <>
 
@@ -67,7 +94,7 @@ export default function PostsPage({ params, Listdata, slugdata }) {
                 :
                 <img
                   loader={imageLoader}
-                  src={`${imageUrlAlt}${postes?.ChannelEntryDetail?.authorDetails?.profileImagePath}`}
+                  src={`${imageUrl}${postes?.ChannelEntryDetail?.authorDetails?.profileImagePath}`}
                   alt="spurtCMS Profile Image"
                   width={32}
                   height={32}
@@ -98,7 +125,7 @@ export default function PostsPage({ params, Listdata, slugdata }) {
 
         <p className="text-base text-black mb-1">{moment(postes?.ChannelEntryDetail?.createdOn).format("MMM DD, YYYY")} </p>
         <div className="text-lg text-current font-light leading-normal mb-6 desc [&_iframe]:aspect-video" dangerouslySetInnerHTML={{
-          __html: postes?.ChannelEntryDetail?.description.replaceAll("<br>", " "),
+          __html: postes?.ChannelEntryDetail?.description?.replaceAll("<br>", " "),
         }} />
         {postesMore?.ChannelEntriesList?.channelEntriesList?.length != 0 && <><div className="border-b border-gray-200 block mb-8 mt-10"></div>
           <h1 className="text-3xxl font-bold text-black mb-10"> More Stories </h1>

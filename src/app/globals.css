@@ -88,3 +88,6 @@ body {
   border-color: rgba(31, 41, 55, 1) !important;
   background-color: rgba(31, 41, 55, 1) !important;
 }
+.max-w-screen-lg {
+  max-width: 1024px !important;
+}

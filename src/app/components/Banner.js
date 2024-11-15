@@ -56,7 +56,7 @@ export default function Banner({ bannerShow, router }) {
                     </>
                     : <img
                       loader={imageLoader}
-                      src={`${imageUrlAlt}${bannerShow?.[0]?.authorDetails?.profileImagePath}`}
+                      src={`${imageUrl}${bannerShow?.[0]?.authorDetails?.profileImagePath}`}
                       alt="spurtCMS Profile Image"
                       width={32}
                       height={32}

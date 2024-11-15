@@ -9,7 +9,26 @@ export async function generateMetadata({ params }) {
 
   // let variable_lista={ "limit": 10, "offset": 0,channelId:72,"categoryId":1}
 
-  let variable_lista = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": params?.slug, }, "AdditionalData": { "authorDetails": true, "categories": true } }
+  // let variable_lista = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": params?.slug, }, "AdditionalData": { "authorDetails": true, "categories": true } }
+
+  let variable_lista = {
+    "commonFilter": {
+      "limit": 10,
+      "offset": 0,
+      "keyword":""
+    },
+    "entryFilter": {
+      "categorySlug": params?.slug, 
+      "Status": "Publish"
+    },
+    "AdditionalData": {
+      "authorDetails": true,
+      "categories": true
+    }
+  }
+
+
+
 
 
   const dtas = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_lista)
@@ -35,12 +54,43 @@ export const PostServerAction = async ({ params }) => {
   // let variable_list={ "limit": 10, "offset": 0,"requireData": {
   //   "authorDetails": true
   // }}
-  let variable_list = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": defaultCategorySlug }, "AdditionalData": { "authorDetails": true, "categories": true } }
+  // let variable_list = { "commonFilter": { "limit": 10, "offset": 0 }, "entryFilter": { "categorySlug": defaultCategorySlug }, "AdditionalData": { "authorDetails": true, "categories": true } }
 
+  let variable_list ={
+    "commonFilter": {
+      "limit": 10,
+      "offset": 0,
+      "keyword":""
+    },
+    "entryFilter": {
+      "Status": "Publish",
+      "categorySlug": defaultCategorySlug 
+    },
+    "AdditionalData": {
+      "authorDetails": true,
+      "categories": true
+    }
+  }
+  
+  
+  
+  
   const Listdata = await fetchGraphQl(GET_POSTS_LIST_QUERY, variable_list)
 
 
-  let variable_slug = { "slug": params?.slug, "AdditionalData": { "authorDetails": true, "categories": true } }
+
+
+  let variable_slug = {
+ 
+    "slug": params?.slug,
+    "AdditionalData": {
+      "authorDetails": true,
+      "memberProfile": false,
+      "additionalFields": true,
+      "categories": true
+    }
+    
+  }
 
   const slugdata = await fetchGraphQl(GET_POSTS_SLUG_QUERY, variable_slug)
 
