@@ -81,7 +81,7 @@ export default function PostsPage({ params, Listdata, slugdata }) {
       <div className="md:lg-0 px-4">
         <nav aria-label="breadcrumb">
           <ol class="flex flex-wrap space-x-2 items-center mb-8">
-            <Link href={cateId == null ? "/" : `/?cateId=${cateId}&scroll=${scrollX}`}><li><p class="text-xl text-gray-600 flex justify-start gap-2 items-center"> <img src="/img/home.svg" className="h-5" />Home</p></li> </Link>
+            <a href={cateId == null ? "/" : `/?cateId=${cateId}&scroll=${scrollX}`}><li><p class="text-xl text-gray-600 flex justify-start gap-2 items-center"> <img src="/img/home.svg" className="h-5" />Home</p></li> </a>
             <li> <img src="/img/arrow-breadcrumbs.svg" /> </li>
             <li class="text-black text-xl line-clamp-1 w-80" aria-current="page">{postes?.ChannelEntryDetail?.title ? postes?.ChannelEntryDetail?.title : <div role="status" class="max-w-sm animate-pulse"> <div class="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48"></div></div>}</li>
           </ol>
