@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { GET_POSTS_LIST_QUERY } from "../../api/query";
 import { fetchGraphQl } from "../../api/graphicql";
 import Banner from "../Banner";
@@ -27,6 +27,8 @@ export default function HomePage({ Listdata, postdatas }) {
   const [scrollX, setscrollX] = useState(0);
   const [loader, setLoader] = useState(false)
   const [triger, setTriger] = useState(0)
+
+  const popstate = usePathname()
   let cateId = null
 
   cateId = searchParams.get('cateId')
@@ -120,6 +122,18 @@ export default function HomePage({ Listdata, postdatas }) {
 
     }
   }
+
+  useEffect(()=>{
+    console.log(searchParams, popstate, "pathnamevalue")
+    window.addEventListener('popstate', (e) =>{
+      if(e){
+        if(popstate === '/'){
+          window.location.reload()
+        }
+      }
+    })
+    // console.log(e,"user clicked back button")
+  },[popstate])
 
 
   return (
