@@ -6,7 +6,7 @@ import ThemeSwitch from "../utilities/Theme/ThemeSwitch";
 export default function Header() {
   return (
     <header className="flex items-center justify-between md:py-8 sm:py-4 lg:px-0 px-4 py-4">
-      <a href={"/"}>
+      <Link href={"/"}>
 
         <Image
           src="/img/logo.svg"
@@ -16,7 +16,7 @@ export default function Header() {
           height={32}
           priority
 
-        /></a>
+        /></Link>
       <ThemeSwitch />
 
     </header>

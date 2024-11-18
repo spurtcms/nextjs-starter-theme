@@ -49,7 +49,7 @@ export default function Post({ data, activeIndex, scrollX }) {
           <h1 className="text-3xxl font-bold line-clamp-2 text-black hover:underline   leading-[2.625rem] line-clamp-2"> {data.title}</h1></Link>
         <p className="text-base text-black my-3">{moment(data.createdOn).format("MMM DD, YYYY")} </p>
         <div className="text-lg text-current  font-light line-clamp-3 mb-3 desc">
-          <div dangerouslySetInnerHTML={{ __html: data?.description.replaceAll("<br>", " ") }}></div>
+          <div dangerouslySetInnerHTML={{ __html: data?.description.replaceAll("<br>", " ").replace(/p-\[24px_60px_10px\]/g, "") }}></div>
         </div>
         <div className="flex items-center gap-x-2">
           <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">

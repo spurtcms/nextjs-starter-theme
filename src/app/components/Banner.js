@@ -70,7 +70,7 @@ export default function Banner({ bannerShow, router }) {
             </div>
             <div className="w-full max-w-full w-full sm:w-5/12">
               <div className="text-lg text-current font-light line-clamp-4 desc">
-                <div dangerouslySetInnerHTML={{ __html: bannerShow?.[0]?.description.replaceAll("<br>", " "), }} />
+                <div dangerouslySetInnerHTML={{ __html: bannerShow?.[0]?.description.replaceAll("<br>", " ").replace(/p-\[24px_60px_10px\]/g, "") }} />
               </div>
             </div>
           </div>
