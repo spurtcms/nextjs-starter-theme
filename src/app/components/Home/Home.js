@@ -61,7 +61,7 @@ export default function HomePage({ Listdata, postdatas }) {
     const fetchData = async (limit, offset, category) => {
       setLoader(false);
       const posts = await PostFilterApi(limit, offset, category)
-      console.log(posts,"posts")
+
       handlePostSplit(posts)
     };
 

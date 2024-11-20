@@ -9,7 +9,7 @@ export default function Post({ data, activeIndex, scrollX }) {
   const imageLoader = ({ src }) => {
     return src
   }
-  console.log(data.slug,'rdqweqweqweqwe')
+
   return (
     <>
 

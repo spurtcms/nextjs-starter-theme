@@ -49,7 +49,7 @@ export default function PostsPage({ params, Listdata, slugdata }) {
     setLoader(true)
   }, [])
 
-  console.log(postes?.ChannelEntryDetail?.authorDetails?.profileImagePath,"posteslolol")
+
 
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
 
