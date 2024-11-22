@@ -38,6 +38,11 @@ Use the Deploy Button below, you'll deploy the example using
 
 Open .env and set  NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL  to  be the URL to your GraphQL endpoint in spurtCMS. 
 
+```bash
+NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL="https://your-graphql-endpoint-url"
+```
+
+
 ## Step 1. Steps to get API Key
  
  Before starting our Next JS starter theme blog template we need to go inside our spurtCMS Admin and get the default token that we will be using for displaying our content.
@@ -61,9 +66,6 @@ Once you have your token add it to your env.
 
 Your env should look like this:
 
-```bash
-NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL=""
-```
 ```bash
 NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_TOKEN="your-api-token"
 ```
