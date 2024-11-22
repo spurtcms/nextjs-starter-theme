@@ -32,7 +32,7 @@ The Studio connects to spurtcms, which gives you hosted content APIs with a flex
 
 Use the Deploy Button below, you'll deploy the example using 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fspurtcms%2Fnextjs-starter-theme)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fspurtcms%2Fnextjs-starter-theme&env=next_public_spurtcms_nextjs_starter_apikey)
 
 ## Set up environment variables
 
