@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,7 +22,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   /* background: white; */
-  font-family: "Roboto", sans-serif !important;
+  font-family: "Lexend", sans-serif;
 }
 
 .text-3xxl {

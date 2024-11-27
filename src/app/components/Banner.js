@@ -38,7 +38,8 @@ export default function Banner({ bannerShow, router }) {
               <p className="text-base text-black my-3">{moment(bannerShow?.[0]?.createdOn).format("MMM DD, YYYY")}</p>
               <div className="flex items-center gap-x-2">
                 <div class="flex items-center justify-center relative h-8 w-8 overflow-hidden rounded-full bg-slate-300">
-                  {bannerShow?.[0]?.authorDetails?.profileImagePath == "" ?
+                  {console.log(bannerShow,"bannerShow")}
+                  {bannerShow?.[0]?
                     <>
                       {bannerShow?.[0]?.authorDetails?.firstName?.[0] ?
                         <span className="text-3xxl text-white">{bannerShow?.[0]?.authorDetails?.firstName?.[0]}</span>
