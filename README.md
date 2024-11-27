@@ -21,9 +21,6 @@ The Studio connects to spurtcms, which gives you hosted content APIs with a flex
 
 
 
-## Admin Panel Demo
-
-### [https://nextjs-starter-theme.vercel.app/](https://nextjs-starter-theme.vercel.app/)
 
 
 
