@@ -21,7 +21,6 @@ export const apiinstance = async (url, options) => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SPURTCMS_NEXTJS_STARTER_THEME_BASEURL}${url}`, config);
     const data = await res.json()
-    console.log(data,"ddddddddddddddd")
     return data
   } catch (error) {
     console.log(error)

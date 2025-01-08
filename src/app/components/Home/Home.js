@@ -124,7 +124,6 @@ export default function HomePage({ Listdata, postdatas }) {
   }
 
   useEffect(()=>{
-    console.log(searchParams, popstate, "pathnamevalue")
     window.addEventListener('popstate', (e) =>{
       if(e){
         if(popstate === '/'){
