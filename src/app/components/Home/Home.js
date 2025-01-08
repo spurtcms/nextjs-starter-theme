@@ -123,16 +123,16 @@ export default function HomePage({ Listdata, postdatas }) {
     }
   }
 
-  useEffect(()=>{
-    window.addEventListener('popstate', (e) =>{
-      if(e){
-        if(popstate === '/'){
+  useEffect(() => {
+    window.addEventListener('popstate', (e) => {
+      if (e) {
+        if (popstate === '/') {
           window.location.reload()
         }
       }
     })
     // console.log(e,"user clicked back button")
-  },[popstate])
+  }, [popstate])
 
 
   return (
@@ -189,7 +189,10 @@ export default function HomePage({ Listdata, postdatas }) {
             </>
           </>
           :
-          <NodataImg />
+          <>
+            {loader == true &&
+              <NodataImg />}
+          </>
         }
       </div>
 
