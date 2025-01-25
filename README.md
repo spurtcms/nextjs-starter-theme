@@ -1,6 +1,6 @@
 # A versatile template for content-focused platforms, offering seamless integration with blogs, news, and articles for a dynamic user experience.
 
-![Screenshot of spurtCMS using Presentation Tool to do Visual Editing](	https://www.spurtcms.com/spurtcms-starter-template.jpg))
+![Screenshot of spurtCMS using Presentation Tool to do Visual Editing](	https://spurtcms.com/image-resize?name=media/blogstarter.png)
 
 This starter is a statically generated blog that uses Next.js App Router for the frontend and [spurtcms](https://dev.spurtcms.com) to handle its content. It comes with a native spurtcms that offers features like real-time collaboration and visual editing with live updates.Check out the [project documentaion](https://dev.spurtcms.com/documentation) for more details.
 
