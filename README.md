@@ -1,4 +1,4 @@
-# A statically generated blog example using Next.js and spurtcms
+# A versatile template for content-focused platforms, offering seamless integration with blogs, news, and articles for a dynamic user experience.
 
 ![Screenshot of spurtCMS using Presentation Tool to do Visual Editing](	https://www.spurtcms.com/spurtcms-starter-template.jpg))
 
